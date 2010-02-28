@@ -121,7 +121,7 @@ function show_detail2(id)
 			href = item.getElementsByTagName('link')[0].getAttribute("href"); 
 			content	= item.getElementsByTagName('content')[0].firstChild.nodeValue; //[6]
 			//詳細表示
-			detail = detail + "<div style='position:absolute;top:0px;visibility:visible;'><b><a href=" + href + ">" + title + "</a></b>" + "<p>" + content + "</p></div>" ;
+			detail = detail + "<div id='" + href + "' onclick='show_detail3(id)' style='position:absolute;top:0px;visibility:visible;'><b>" + title + "</b>" + "<p>" + content + "</p></div>" ;
 		}	
     }
 	
@@ -131,6 +131,11 @@ function show_detail2(id)
 	//document.getElementById('output').style.visibility = "hidden";
 	document.getElementById('detail').style.visibility = "visible";
 	
+}
+//詳細情報をネイティブブラウザで表示する
+//idにはURLを指定
+function show_detail3(id){
+	widget.openURL(id);
 }
 //通常画面で最新のentryのtitleを表示する
 function show_newest()
