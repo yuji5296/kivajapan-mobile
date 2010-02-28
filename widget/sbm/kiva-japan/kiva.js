@@ -127,15 +127,17 @@ function show_detail2(id)
 	
 	//詳細情報を表示
 	document.getElementById("detail").innerHTML = detail ;
+	document.getElementById('detail').style.visibility = "visible";
+	document.getElementById("list").innerHTML = "" ;
 	document.getElementById('list').style.visibility = "hidden";
 	//document.getElementById('output').style.visibility = "hidden";
-	document.getElementById('detail').style.visibility = "visible";
 	
 }
 //詳細情報をネイティブブラウザで表示する
 //idにはURLを指定
 function show_detail3(id){
 	widget.openURL(id);
+    show_list();
 }
 //通常画面で最新のentryのtitleを表示する
 function show_newest()
@@ -199,6 +201,7 @@ function show_list()
 	//document.getElementById("detail").innerHTML = detail ;
 	document.getElementById('list').style.visibility = "visible";
 	//document.getElementById('output').style.visibility = "visible";
+	document.getElementById("detail").innerHTML = "" ;
 	document.getElementById('detail').style.visibility = "hidden";
 	//document.getElementById('help').style.visibility = "hidden";
 	
