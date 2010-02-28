@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+  id="http://kivajapan.jp/"
+  version="0.4"
+  width="400"
+  height="100">
+	<name>Kiva Japan</name>
+	<author url="http://k1.fc2.com/cgi-bin/hp.cgi/yuji5296/">Yuji DOI</author>
+	<icon src="kiva_icon.png" />
+	<content type="text/html" src="index.html" />
+	<description>今僕らにできる社会貢献!</description>
+	<xwidget profile="1.0">
+		<wakeupclass>5</wakeupclass>
+	</xwidget>
+</widget>
