@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets"
   id="http://kivajapan.jp/"
-  version="0.6"
+  version="0.7.1"
   width="400"
   height="100">
 	<name>Kiva Japan</name>
