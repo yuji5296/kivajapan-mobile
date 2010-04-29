@@ -69,7 +69,8 @@ function requestFile( data , method , fileName , async )
 	//URLをテキストボックスから取得
 	//fileName = document.getElementById("url").value
     //fileName = "atom.xml";
-	fileName = "http://kivajapan.jp/?page=Atom";
+	//fileName = "http://kivajapan.jp/?page=Atom";//Ver.0.7
+	fileName = "http://kivajapan.jp/atom.xml";	//Ver.0.7
 	//fileName = "https://mail.google.com/mail/feed/atom/?atom_browser_auth"
 	//fileName = "https://secure.softbank.ne.jp/yuji5296:yuji727@mail.google.com/mail/feed/atom/"
 
@@ -156,7 +157,7 @@ function show_newest()
 	document.getElementById("newest").innerHTML = list ;
 	
 	//タイマーセット
-	timerID = setTimeout("show_newest()", 2000);
+	timerID = setTimeout("show_newest()", 3000);//Ver.7.0
 	
 	//次のアイテムの表示する
 	counter = counter + 1;
