@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:id="@+id/menu01" android:title="@string/update" android:titleCondensed="@string/update" android:icon="@android:drawable/ic_menu_rotate"></item>
+<item android:id="@+id/menu02" android:title="@string/info" android:titleCondensed="@string/info" android:icon="@android:drawable/ic_menu_info_details"></item>
+<item android:id="@+id/menu03" android:title="@string/help" android:titleCondensed="@string/help" android:icon="@android:drawable/ic_menu_help"></item>
+</menu>
