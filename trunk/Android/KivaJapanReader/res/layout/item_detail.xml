@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_detail.xml -->
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<TextView
+		android:id="@+id/item_detail_title"
+	android:background="#FFFFFF"                   
+	android:textColor="#006400"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+	/>
+	<TextView
+		android:id="@+id/item_detail_author"
+	android:background="#FFFFFF"                   
+	android:textColor="#006400"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"/>
+	<WebView 
+		android:id="@+id/WebView01"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"/>
+</LinearLayout>

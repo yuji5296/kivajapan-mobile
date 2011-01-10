@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<style name="KivaJapanStyle" parent="android:style/Theme">
+  <!-- Window attributes -->  
+	<item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+	<item name="android:windowTitleStyle">@style/WindowTitle</item>
+</style>  
+
+
+<style name="WindowTitleBackground">  
+	<item name="android:background">#006400</item>  
+</style>  
+
+<style name="WindowTitle">  
+    <item name="android:textColor">#FFFFFF</item>                   
+</style>
+
+
+<color name="list_row_background_normal">#FFFFFF</color>
+</resources>
