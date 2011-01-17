@@ -1,48 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:orientation="vertical" android:background="@color/backgroundcolor">
-	<TextView android:id="@+id/TextView04"
-		android:layout_width="fill_parent"
-		 android:layout_height="wrap_content"
-		  android:background="@color/titlebackgroundcolor"
-		    android:textColor="@color/titletextcolor"
-		     android:gravity="center" android:text="今僕らにできる社会貢献" android:textSize="20sp" android:textStyle="bold"/>
-	<ImageView android:id="@+id/ImageView01"
-		android:src="@drawable/kiva_japan"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:clickable="true" android:background="@color/backgroundcolor"/>
-	<TextView android:background="@color/backgroundcolor"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@color/textcolor"
-		android:textSize="20sp"
-		android:text="RSS Reader for Android" android:gravity="center" android:id="@+id/AppName"/><TextView android:background="@color/backgroundcolor"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@color/textcolor"
-		android:textSize="20sp"
-		android:gravity="center" android:id="@+id/Version" android:text="@string/version"/>
-		<TextView android:background="@color/backgroundcolor"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@color/textcolor"
-		android:gravity="center" android:text="@string/author" android:autoLink="email" android:id="@string/author"/><TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@color/textcolor"
-		android:gravity="center" android:id="@+id/link01" android:autoLink="web" android:text="@string/url_site"/><TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@color/textcolor"
-		android:gravity="center" android:id="@+id/link01" android:text="@string/url_kivajapan" android:autoLink="web"/><TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:textColor="@color/textcolor"
-		android:gravity="center" android:id="@+id/link01" android:text="@string/url_kiva" android:autoLink="web"/>
-	<TextView android:layout_width="fill_parent"
-		 android:layout_height="wrap_content"
-		  android:background="@color/titlebackgroundcolor"
-		    android:textColor="@color/titletextcolor"
-		     android:gravity="center" android:id="@+id/Copyright" android:text="Copyright(C) 2011, Yuji DOI."/>
+	<TextView android:id="@+id/TextView04" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="@color/titlebackgroundcolor"
+		android:textColor="@color/titletextcolor" android:gravity="center"
+		android:text="今僕らにできる社会貢献" android:textSize="20sp" android:textStyle="bold" />
+
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_weight="1" android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+		<LinearLayout android:id="@+id/LinearLayout01"
+			android:orientation="vertical" android:layout_height="fill_parent"
+			android:layout_width="fill_parent" android:layout_gravity="center">
+			<ImageView android:id="@+id/ImageView01" android:src="@drawable/kiva_japan"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:clickable="true" android:background="@color/backgroundcolor" />
+			<TextView android:background="@color/backgroundcolor"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:textColor="@color/textcolor" android:textSize="20sp"
+				android:text="RSS Reader for Android" android:gravity="center"
+				android:id="@+id/AppName" />
+			<TextView android:background="@color/backgroundcolor"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:textColor="@color/textcolor" android:textSize="20sp"
+				android:gravity="center" android:id="@+id/Version" android:text="@string/version" />
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content"></TextView>
+			<TextView android:background="@color/backgroundcolor"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:textColor="@color/textcolor" android:gravity="center"
+				android:text="@string/author" android:autoLink="email" android:id="@string/author" />
+			<TextView android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:textColor="@color/textcolor"
+				android:gravity="center" android:id="@+id/link01" android:autoLink="web"
+				android:text="@string/url_site" />
+			<TextView android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:textColor="@color/textcolor"
+				android:gravity="center" android:id="@+id/link01" android:text="@string/url_kivajapan"
+				android:autoLink="web" />
+			<TextView android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:textColor="@color/textcolor"
+				android:gravity="center" android:id="@+id/link01" android:text="@string/url_kiva"
+				android:autoLink="web" />
+			<TextView android:id="@+id/TextView02" android:layout_width="wrap_content"
+				android:layout_height="wrap_content"></TextView>
+
+		</LinearLayout>
+
+	</ScrollView>
 	
+	
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="@color/titlebackgroundcolor"
+		android:textColor="@color/titletextcolor" android:id="@+id/Copyright"
+		android:text="Copyright(C) 2011, Yuji DOI." android:gravity="center" />
+
 </LinearLayout>
+

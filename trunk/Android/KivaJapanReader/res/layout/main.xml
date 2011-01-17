@@ -4,25 +4,52 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-	<!-- リストが空のときに表示 -->
-    <ImageView     		
-		android:id="@android:id/empty"
-	android:background="#FFFFFF"                   
-	android:textColor="#006400"
-		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent" 
-		android:scaleType="centerInside"
-		android:src="@drawable/kiva_japan"
-	/> 
 
 	<!-- リストビュー -->
 	<ListView
 		android:id="@android:id/list"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" 
+		android:layout_height="wrap_content"
+		android:textColor="@xml/text" android:background="@xml/list_row_background" 
 	/>
+    
+    
+	<!-- リストが空のときに表示 -->
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@android:id/empty"
+    	android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    >
+	<TextView android:gravity="center" android:text="今僕らにできる社会貢献"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:background="@color/titlebackgroundcolor" 
+		android:textColor="@color/titletextcolor"
+		android:textStyle="bold" android:textSize="20sp" />
+
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:orientation="vertical" android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:background="@color/backgroundcolor">
+		<ImageView android:textColor="#006400" android:layout_width="fill_parent"
+			android:scaleType="centerInside" android:src="@drawable/kiva_japan"
+			android:layout_height="wrap_content" android:background="@color/backgroundcolor" />
+		<LinearLayout android:id="@+id/LinearLayout01"
+			android:layout_height="wrap_content" android:orientation="horizontal"
+			android:layout_width="fill_parent" android:gravity="center"
+			android:background="@color/backgroundcolor">
+			<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/progresscircle_small"></ImageView>
+			<TextView android:id="@+id/TextView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Now loding..."
+				android:textColor="@color/textcolor"></TextView>
+
+</LinearLayout></LinearLayout>
 	
-<!--
+
+</LinearLayout>
+
+	
+<!-- 
 	 <TextView
 	    android:text="@string/hello"
 		android:layout_width="fill_parent"

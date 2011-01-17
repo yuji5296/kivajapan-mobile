@@ -4,4 +4,6 @@
    <color name="titletextcolor">#FFFFFF</color>
    <color name="backgroundcolor">#FFFFFF</color>
    <color name="textcolor">#006400</color>
+   <color name="list_row_background_normal">#FFFFFF</color>
+   
 </resources>
