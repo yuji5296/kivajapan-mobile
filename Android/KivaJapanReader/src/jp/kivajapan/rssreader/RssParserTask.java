@@ -27,12 +27,11 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 	@Override
 	protected void onPreExecute() {
 		// プログレスバーを表示する
-		mProgressDialog = new ProgressDialog(mActivity);
-//		mProgressDialog.setView(this,0,0,0,0);
-		mProgressDialog.setTitle(R.string.update);
-		mProgressDialog.setMessage("Now loding...");
-		mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		mProgressDialog.show();
+//		mProgressDialog = new ProgressDialog(mActivity);
+////		mProgressDialog.setTitle(R.string.update);
+//		mProgressDialog.setMessage("Now loding...");
+//		mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//		mProgressDialog.show();
 	}
 
 	// バックグラウンドにおける処理を担う。タスク実行時に渡された値を引数とする
@@ -54,7 +53,7 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 	// メインスレッド上で実行される
 	@Override
 	protected void onPostExecute(RssListAdapter result) {
-		mProgressDialog.dismiss();
+//		mProgressDialog.dismiss();
 		mActivity.setListAdapter(result);
 	}
 

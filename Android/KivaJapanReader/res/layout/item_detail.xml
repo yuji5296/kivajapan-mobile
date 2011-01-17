@@ -2,9 +2,8 @@
 <!-- item_detail.xml -->
 <LinearLayout
 	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	xmlns:android="http://schemas.android.com/apk/res/android">
+	xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/backgroundcolor" android:layout_height="fill_parent">
 	<TextView
 		android:id="@+id/item_detail_title"
 	android:background="#FFFFFF"                   
@@ -22,5 +21,5 @@
 	<WebView 
 		android:id="@+id/WebView01"
 		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent"/>
+		android:layout_height="fill_parent" android:background="@color/backgroundcolor"/>
 </LinearLayout>

@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class RssReaderActivity extends ListActivity {
@@ -23,6 +26,16 @@ public class RssReaderActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+    	// アニメーションするイメージを取得
+    	ImageView animWindow = (ImageView)findViewById(R.id.ImageView01);
+
+    	// アニメーションリソースをロード
+    	Animation anim = AnimationUtils.loadAnimation(this, R.anim.progresscircle);
+    	anim.setRepeatMode(Animation.RESTART);
+
+    	// アニメーション開始
+    	animWindow.startAnimation(anim);
         
 		// Itemオブジェクトを保持するためのリストを生成し、アダプタに追加する
 		mItems = new ArrayList<Item>();
