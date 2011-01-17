@@ -10,9 +10,12 @@
 	<item
 		android:drawable="@android:color/transparent"
 		android:state_selected="true" />
+	
+	<!-- 以下が有効な場合、メニュー表示時に背景色が変更されるが、更新時に背景色が有効にならない 
 	<item
 		android:drawable="@android:color/transparent"
-		android:state_window_focused="false" />
+		android:state_window_focused="false" />-->
+	
 	<item
 		android:drawable="@color/list_row_background_normal" />
 </selector>

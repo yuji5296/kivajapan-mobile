@@ -3,6 +3,7 @@ package jp.kivajapan.rssreader;
 
 import java.util.ArrayList;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class RssReaderActivity extends ListActivity {
 	//public static final String RSS_FEED_URL = "http://itpro.nikkeibp.co.jp/rss/ITpro.rdf";
@@ -20,13 +22,17 @@ public class RssReaderActivity extends ListActivity {
 //	public static final int MENU_ITEM_RELOAD = Menu.FIRST; 
 	private ArrayList<Item> mItems;
 	private RssListAdapter mAdapter;
+	private ProgressDialog mProgressDialog;
+	private ListView listview;
 	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+
+//        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
+
     	// アニメーションするイメージを取得
     	ImageView animWindow = (ImageView)findViewById(R.id.ImageView01);
 
@@ -53,6 +59,40 @@ public class RssReaderActivity extends ListActivity {
 			//mAdapter.add(new Item());
 		//}
     }
+    
+//    @Override
+//    public void onRestart(){
+//        super.onRestart();
+//        Toast.makeText(this, "onRestar()", Toast.LENGTH_SHORT).show();
+//    }
+//    
+//    @Override
+//    public void onStart(){
+//        super.onStart();
+//        Toast.makeText(this, "onStart()", Toast.LENGTH_SHORT).show();
+//    }
+//    
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        Toast.makeText(this, "onResume()", Toast.LENGTH_SHORT).show();   	
+//    }
+//
+//    @Override
+//    public void onPause(){
+//        super.onPause();
+//        Toast.makeText(this, "onPause()", Toast.LENGTH_SHORT).show();
+//    }
+//    @Override
+//    public void onStop(){
+//        super.onStop();
+//        Toast.makeText(this, "onStop()", Toast.LENGTH_SHORT).show();
+//    }
+//    @Override
+//    public void onDestroy(){
+//        super.onDestroy();
+//        Toast.makeText(this, "onDestroy()", Toast.LENGTH_SHORT).show();
+//    }
     
 	// リストの項目を選択した時の処理
 	@Override
@@ -85,27 +125,48 @@ public class RssReaderActivity extends ListActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
+
 		switch (item.getItemId()) {
 			// 更新
 			case R.id.menu01:
+
+				//ListViewの表示をemptyに変更する
 				// アダプタを初期化し、タスクを起動する
-				mItems = new ArrayList<Item>();
+//				mItems.clear();
+				mAdapter.clear();
+//				mItems = new ArrayList<Item>();
 				mAdapter = new RssListAdapter(this, mItems);
+//				//Adapterの更新
+//				mAdapter.notifyDataSetChanged();
+//				//ListViewの更新
+//				listview = getListView();
+//				listview.invalidateViews();
+//				listview.invalidate();
+				
 				// タスクはその都度生成する
 				RssParserTask task = new RssParserTask(this, mAdapter);
 				task.execute(RSS_FEED_URL);
-				return true;
+
+				//表示後リストのスタイルが適用されない
+				//list_row_background.xmlを修正で解決
+				//android:state_window_focused="false"の場合に背景色を透過にする設定を無効化
+				//更新時にandroid:state_window_focusedをtrueにすれば良い？
+				
+				break;
+//				return true;
 			// 情報
 			case R.id.menu02:
 				intent = new Intent(this, AboutActivity.class);
 				startActivity(intent);
-				return true;
+				break;
+//				return true;
 				
 			// ヘルプ
 			case R.id.menu03:
 				intent = new Intent(this, HelpActivity.class);
 				startActivity(intent);
-				return true;
+				break;
+//				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
