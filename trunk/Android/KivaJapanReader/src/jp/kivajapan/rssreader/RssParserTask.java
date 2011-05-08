@@ -82,6 +82,9 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 								// ISO-8859-1としてパースすれば成功するが文字化けする為、getBytesでUTF-8に変換する
 								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
 								currentItem.setTitle(str);
+							} else if (tag.equals("link")) {
+								//<link>要素のhref属性を取得
+								currentItem.setLink(parser.getAttributeValue(null,"href"));
 							} else if (tag.equals("description")) {
 								currentItem.setDescription(parser.nextText());
 							} else if (tag.equals("summary")) {

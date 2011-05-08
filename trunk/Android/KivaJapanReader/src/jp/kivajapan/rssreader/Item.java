@@ -3,6 +3,8 @@ package jp.kivajapan.rssreader;
 public class Item {
 	// 記事のタイトル
 	private CharSequence mTitle;
+	// URL
+	private CharSequence mLink;
 	// 記事の本文
 	private CharSequence mDescription;
 	// 記事の要約
@@ -16,6 +18,7 @@ public class Item {
 
 	public Item() {
 		mTitle = "";
+		mLink = "";
 		mDescription = "";
 		mSummary = "";
 		mContent = "";
@@ -37,6 +40,15 @@ public class Item {
 		mTitle = title;
 	}
 
+	//URLの取得・設定
+	public CharSequence getLink() {
+		return mLink;
+	}
+	public void setLink(CharSequence link) {
+		mLink = link;
+	}
+
+	
 	//要約の取得・設定
 	public CharSequence getSummary() {
 		return mSummary;
