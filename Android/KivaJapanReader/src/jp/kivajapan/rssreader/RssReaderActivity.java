@@ -103,6 +103,7 @@ public class RssReaderActivity extends ListActivity {
 		intent.putExtra("DESCRIPTION", item.getDescription());
 		intent.putExtra("CONTENT", item.getContent());
 		intent.putExtra("AUTHOR", item.getAuthor());
+		intent.putExtra("LINK", item.getLink());
 		startActivity(intent);
 	}
 	

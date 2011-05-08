@@ -3,7 +3,7 @@
     <string name="test">http://www.kiva.org/img/w80h80/674364.jpg</string>
     <string name="hello">Hello Kiva Japan!</string>
     <string name="app_name">Kiva Japan RSS Reader</string>
-	<string name="version">Ver.1.2.0</string>
+	<string name="version">Ver.1.3.0</string>
 	<string name="author">Yuji DOI&lt;yuji5296@gmail.com&gt;</string>
 	<string name="mail">yuji5296@gmail.com</string>
     <string name="url_site">https://sites.google.com/site/kivajapanrssreader/</string>
@@ -14,5 +14,6 @@
 	<string name="info">情報</string>
 	<string name="update">更新</string>
 	<string name="loding">起業家情報取得中</string>
+	<string name="loan">融資する</string>
 
 </resources>
