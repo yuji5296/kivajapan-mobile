@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:id="@+id/menu_loan" android:titleCondensed="@string/loan" android:title="@string/loan" android:icon="@android:drawable/ic_menu_add"></item>
+<item android:title="@string/share" android:titleCondensed="@string/share" android:icon="@android:drawable/ic_menu_share" android:id="@+id/menu_share"></item>
+<item android:id="@+id/menu_search" android:titleCondensed="@string/search" android:title="@string/search" android:icon="@android:drawable/ic_menu_search"></item>
+</menu>
