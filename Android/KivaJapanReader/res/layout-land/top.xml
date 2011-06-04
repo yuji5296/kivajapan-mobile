@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:orientation="vertical" 
+	android:background="@color/backgroundcolor">
+	<TextView android:gravity="center" android:text="今僕らにできる社会貢献"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:background="@color/titlebackgroundcolor" 
+		android:textColor="@color/titletextcolor"
+		android:textStyle="bold" android:textSize="20sp" />
+
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:gravity="center"
+		android:background="@color/backgroundcolor" android:orientation="horizontal">
+	<LinearLayout android:id="@+id/LinearLayout02"
+		android:layout_height="fill_parent"
+		android:gravity="center"
+		android:background="@color/backgroundcolor" android:orientation="vertical" android:layout_width="wrap_content">
+		<ImageView android:src="@drawable/kiva_japan" android:id="@+id/imageView2" android:background="@color/backgroundcolor" android:layout_height="wrap_content" android:layout_width="wrap_content" android:scaleType="fitCenter"></ImageView>
+		<ImageButton android:id="@+id/imageButton3" android:src="@drawable/for_beginner" android:onClick="onClickButton2" android:scaleType="fitCenter" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
+		<ImageButton android:scaleType="fitCenter" android:onClick="onClickButton1" android:layout_width="wrap_content" android:id="@+id/imageButton1" android:src="@drawable/search_entrepreneurs" android:layout_height="wrap_content"></ImageButton>
+		<ImageButton android:onClick="onClickButton3" android:id="@+id/imageButton2" android:src="@drawable/about_translator2" android:scaleType="fitCenter" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
+	</LinearLayout>
+	<ImageView android:onClick="onClick_Pickup" android:src="@drawable/progresscircle_small" android:layout_width="match_parent" android:layout_height="fill_parent" android:scaleType="center" android:clickable="true" android:id="@+id/imageView1"></ImageView>
+	<ImageView android:id="@+id/imageView1" android:src="@drawable/progresscircle_small" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" android:onClick="onClick_Pickup"></ImageView>
+	<!-- 
+	<WebView android:layout_width="match_parent" android:id="@+id/webView1" android:layout_height="match_parent"></WebView>
+	-->
+	<ImageView android:id="@+id/ImageView02" android:onClick="onClick_Pickup" android:src="@drawable/progresscircle_small" android:layout_width="match_parent" android:layout_height="fill_parent" android:scaleType="center"></ImageView>
+	<ImageView android:id="@+id/ImageView03" android:onClick="onClick_Pickup" android:src="@drawable/progresscircle_small" android:layout_width="match_parent" android:layout_height="fill_parent" android:scaleType="center"></ImageView>
+	<ImageView android:id="@+id/ImageView04" android:onClick="onClick_Pickup" android:src="@drawable/progresscircle_small" android:layout_width="match_parent" android:layout_height="fill_parent" android:scaleType="center"></ImageView>
+	<ImageView android:id="@+id/ImageView05" android:onClick="onClick_Pickup" android:src="@drawable/progresscircle_small" android:layout_width="match_parent" android:layout_height="fill_parent" android:scaleType="center"></ImageView>
+</LinearLayout>
+</LinearLayout>
+	
