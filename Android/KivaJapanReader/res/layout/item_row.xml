@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:id="@+id/item_container"
 	android:layout_width="fill_parent" android:layout_height="wrap_content"
-	android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android">
+	android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/backgroundcolor">
 	<!-- 翻訳者の写真をRSSから取得して表示しようとしたがimgタグのsrcを取得できない -->
-	<ImageView android:id="@+id/item_image" android:layout_width="wrap_content" android:layout_height="fill_parent"></ImageView>
+	<ImageView android:id="@+id/item_image" android:layout_height="fill_parent" android:layout_width="wrap_content"
+		android:background="@color/backgroundcolor" android:src="@drawable/jpg674364" android:scaleType="fitCenter" android:minWidth="100dp"></ImageView>
 	<LinearLayout android:id="@+id/LinearLayout01"
-		android:orientation="vertical"
-		android:layout_height="fill_parent" android:layout_width="fill_parent">
-	<TextView android:id="@+id/item_title" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:textSize="18sp"
-		android:lines="1" android:textColor="@xml/text" android:background="@xml/list_row_background" />
-	<TextView android:id="@+id/item_author" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:textColor="@xml/text"
-		android:background="@xml/list_row_background" android:lines="1" />
-	<TextView android:id="@+id/item_descr" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:lines="1"
-		android:textColor="@xml/text" android:background="@xml/list_row_background"
-		android:ellipsize="end" />
+		android:orientation="vertical" android:layout_height="fill_parent"
+		android:layout_width="fill_parent" android:background="@color/backgroundcolor">
+		<TextView android:id="@+id/item_title" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textSize="18sp"
+			android:lines="1" android:textColor="@xml/text" android:background="@xml/list_row_background" />
+		<TextView android:id="@+id/item_author" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:textColor="@xml/text"
+			android:background="@xml/list_row_background" android:lines="1" />
+		<TextView android:id="@+id/item_descr" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:lines="1"
+			android:textColor="@xml/text" android:background="@xml/list_row_background"
+			android:ellipsize="end" />
 
-</LinearLayout>
+	</LinearLayout>
 </LinearLayout>
