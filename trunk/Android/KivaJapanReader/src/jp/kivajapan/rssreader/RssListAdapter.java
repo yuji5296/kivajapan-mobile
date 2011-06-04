@@ -1,10 +1,7 @@
 package jp.kivajapan.rssreader;
 
-import java.net.URL;
 import java.util.List;
-
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +50,12 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 
 			// 画像の取得
 			// 翻訳者の写真をRSSから取得して表示しようとしたがimgタグのsrcを取得できない 
-//			String image = item.getImage().toString();
+			String image = item.getImage().toString();
 //			String image = "http://www.kiva.org/img/w80h80/674364.jpg";
 //			Uri uri = Uri.parse(image);
-//			mImage = (ImageView) view.findViewById(R.id.item_image);
-//			mImage.setImageURI(uri);
+			mImage = (ImageView) view.findViewById(R.id.item_image);
+	    	DownloadTask task = new DownloadTask(mImage);  
+			task.execute(image);
 
 		}
 		return view;

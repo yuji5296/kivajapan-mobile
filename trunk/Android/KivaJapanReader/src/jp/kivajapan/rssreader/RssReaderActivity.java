@@ -3,7 +3,6 @@ package jp.kivajapan.rssreader;
 
 import java.util.ArrayList;
 import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+//import android.widget.Toast;
 
 public class RssReaderActivity extends ListActivity {
 	//public static final String RSS_FEED_URL = "http://itpro.nikkeibp.co.jp/rss/ITpro.rdf";
@@ -22,8 +21,8 @@ public class RssReaderActivity extends ListActivity {
 //	public static final int MENU_ITEM_RELOAD = Menu.FIRST; 
 	private ArrayList<Item> mItems;
 	private RssListAdapter mAdapter;
-	private ProgressDialog mProgressDialog;
-	private ListView listview;
+//	private ProgressDialog mProgressDialog;
+//	private ListView listview;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -129,7 +128,7 @@ public class RssReaderActivity extends ListActivity {
 
 		switch (item.getItemId()) {
 			// 更新
-			case R.id.menu01:
+			case R.id.menu_update:
 
 				//ListViewの表示をemptyに変更する
 				// アダプタを初期化し、タスクを起動する
@@ -156,14 +155,14 @@ public class RssReaderActivity extends ListActivity {
 				break;
 //				return true;
 			// 情報
-			case R.id.menu02:
+			case R.id.menu_info:
 				intent = new Intent(this, AboutActivity.class);
 				startActivity(intent);
 				break;
 //				return true;
 				
 			// ヘルプ
-			case R.id.menu03:
+			case R.id.menu_help:
 				intent = new Intent(this, HelpActivity.class);
 				startActivity(intent);
 				break;

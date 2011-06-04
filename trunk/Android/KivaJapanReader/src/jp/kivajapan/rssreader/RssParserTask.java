@@ -2,20 +2,23 @@ package jp.kivajapan.rssreader;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.net.URL;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.app.ProgressDialog;
+//import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Xml;
 
 public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 	private RssReaderActivity mActivity;
 	private RssListAdapter mAdapter;
-	private ProgressDialog mProgressDialog;
+//	private ProgressDialog mProgressDialog;
 
 	// コンストラクタ
 	public RssParserTask(RssReaderActivity activity, RssListAdapter adapter) {
@@ -101,22 +104,7 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 								currentItem.setContent(str);
 								
 								// imgタグから画像のURLを取得する
-								// htmlの為、パーサでタグが取得できない？
-//								XmlPullParser parser2 = Xml.newPullParser();
-//								parser2.setInput(new StringReader(str));
-//								int eventType2 = parser2.getEventType();
-//								while (eventType2 != XmlPullParser.END_DOCUMENT) {
-//									String tag2 = null;
-//									switch (eventType2) {
-//										case XmlPullParser.START_TAG:
-//											tag2 = parser2.getName();
-//											if (tag2.equals("img")) {
-//												String src = parser2.getAttributeValue(null,"src");
-//												currentItem.setImage(src);
-//											}
-//									}
-//									eventType2 = parser2.next();
-//								}
+								currentItem.setImage(getImage(str));
 							}
 						}
 						break;
@@ -136,4 +124,18 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 		return mAdapter;
 	}
 
+	//HTMLをパースして起業家の画像のURIを取得
+	public String getImage(String html){
+		String linkHref = null;
+		Document doc = Jsoup.parse(html);
+	
+		//http://jsoup.org/cookbook/input/load-document-from-url
+		//Document doc = Jsoup.connect("http://example.com/").get();
+	
+		Elements links = doc.getElementsByTag("img");
+		for (Element link : links) {
+			linkHref = link.attr("src");
+		}
+		return linkHref;
+	}
 }

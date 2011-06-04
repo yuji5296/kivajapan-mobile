@@ -23,6 +23,7 @@ public class Item {
 		mSummary = "";
 		mContent = "";
 		mAuthor = "";
+		mImage = "";
 	}
 
 	public CharSequence getDescription() {

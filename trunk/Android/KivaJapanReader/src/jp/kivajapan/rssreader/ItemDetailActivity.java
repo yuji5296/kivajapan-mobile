@@ -16,9 +16,12 @@ import android.widget.Toast;
 
 public class ItemDetailActivity extends Activity {
 	private TextView mTitle;
+	private TextView mAuthor;
 //	private TextView mDescr;
 	private WebView  mContent;
 	private String mLink;
+	private String title;
+	private String author;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,14 +31,14 @@ public class ItemDetailActivity extends Activity {
 		Intent intent = getIntent();
 
 		//タイトルをセット
-		String title = intent.getStringExtra("TITLE");
+		title = intent.getStringExtra("TITLE");
 		mTitle = (TextView) findViewById(R.id.item_detail_title);
 		mTitle.setText(title);
 
 		//翻訳者をセット
-		String author = "翻訳者：" + intent.getStringExtra("AUTHOR");
-		mTitle = (TextView) findViewById(R.id.item_detail_author);
-		mTitle.setText(author);
+		author = intent.getStringExtra("AUTHOR");
+		mAuthor = (TextView) findViewById(R.id.item_detail_author);
+		mAuthor.setText("翻訳者：" + author);
 
 		//本文をセット
 //		String descr = intent.getStringExtra("DESCRIPTION");
@@ -44,7 +47,8 @@ public class ItemDetailActivity extends Activity {
 		String descr = intent.getStringExtra("CONTENT");
 		mContent = (WebView) findViewById(R.id.WebView01);
 		//CharSequence sHtml = Html.fromHtml(descr);
-		mContent.loadDataWithBaseURL(null, descr, "text/html", "UTF-8", null);
+//		mContent.loadDataWithBaseURL(null, descr, "text/html", "UTF-8", null);
+		mContent.loadData(descr, "text/html", "UTF-8");
 		//webViewLoadData(mContent, descr);
 
 		//URLをセット
@@ -86,10 +90,11 @@ public class ItemDetailActivity extends Activity {
 	// MENUの項目を押したときの処理
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
 
 		switch (item.getItemId()) {
 			// 融資（Webサイトに接続）
-			case R.id.menu01:
+			case R.id.menu_loan:
 				//Toast.makeText(this, mLink, Toast.LENGTH_LONG).show();
 
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -114,6 +119,37 @@ public class ItemDetailActivity extends Activity {
 							}
 						});
 				alert.show();
+				break;
+				// 共有
+			case R.id.menu_share:
+			    intent = new Intent(Intent.ACTION_SEND);
+			    intent.setType("text/plain");  
+			    intent.putExtra(Intent.EXTRA_TEXT, mLink);
+//			    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("http://kivajapan.jp/"));
+//			    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"yuji5296@gmail.com"});  
+//			    intent.putExtra(Intent.EXTRA_CC, "yuji5296@gmail.com");  
+//			    intent.putExtra(Intent.EXTRA_BCC, "yuji5296@gmail.com");  
+			    intent.putExtra(Intent.EXTRA_SUBJECT, title);  
+			    
+			   try{  
+			      startActivityForResult(intent, 0);  
+			    }  
+			    catch (android.content.ActivityNotFoundException ex) {  
+			      Toast.makeText(this, "client not found", Toast.LENGTH_LONG).show();
+			    }
+				break;
+			// 検索
+			case R.id.menu_search:
+				intent = new Intent(Intent.ACTION_SEARCH);
+//				intent.getStringExtra(SearchManager.QUERY);
+			    intent.putExtra("query", author);
+			    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			    try{  
+			      startActivityForResult(intent, 0);  
+			    }  
+			    catch (android.content.ActivityNotFoundException ex) {  
+			      Toast.makeText(this, "client not found", Toast.LENGTH_LONG).show();
+			    }
 				break;
 		}
 		return super.onOptionsItemSelected(item);
