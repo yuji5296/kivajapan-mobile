@@ -4,7 +4,7 @@
 	android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/backgroundcolor">
 	<!-- 翻訳者の写真をRSSから取得して表示しようとしたがimgタグのsrcを取得できない -->
 	<ImageView android:id="@+id/item_image" android:layout_height="fill_parent" android:layout_width="wrap_content"
-		android:background="@color/backgroundcolor" android:src="@drawable/jpg674364" android:scaleType="fitCenter" android:minWidth="100dp"></ImageView>
+		android:background="@color/backgroundcolor" android:src="@drawable/jpg674364" android:scaleType="centerInside"></ImageView>
 	<LinearLayout android:id="@+id/LinearLayout01"
 		android:orientation="vertical" android:layout_height="fill_parent"
 		android:layout_width="fill_parent" android:background="@color/backgroundcolor">
