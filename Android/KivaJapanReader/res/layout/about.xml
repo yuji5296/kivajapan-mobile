@@ -24,7 +24,7 @@
 			<TextView android:background="@color/backgroundcolor"
 				android:layout_width="fill_parent" android:layout_height="wrap_content"
 				android:textColor="@color/textcolor" android:textSize="20sp"
-				android:gravity="center" android:id="@+id/Version" android:text="@string/version" />
+				android:gravity="center" android:id="@+id/Version"/>
 			<TextView android:id="@+id/TextView02" android:layout_width="wrap_content"
 				android:layout_height="wrap_content"></TextView>
 

@@ -20,7 +20,7 @@
 		<ImageButton android:id="@+id/imageButton3" android:layout_height="wrap_content" android:src="@drawable/for_beginner" android:onClick="onClickButton2" android:layout_width="wrap_content" android:scaleType="fitCenter"></ImageButton>
 		<ImageButton android:onClick="onClickButton1" android:layout_height="wrap_content" android:id="@+id/imageButton1" android:src="@drawable/search_entrepreneurs" android:layout_width="wrap_content" android:scaleType="fitCenter"></ImageButton>
 		<ImageButton android:onClick="onClickButton3" android:layout_height="wrap_content" android:id="@+id/imageButton2" android:src="@drawable/about_translator2" android:scaleType="fitCenter" android:layout_width="wrap_content"></ImageButton>
-		<ImageView android:id="@+id/imageView1" android:src="@drawable/progresscircle_small" android:scaleType="center" android:layout_height="fill_parent" android:layout_width="match_parent" android:onClick="onClick_Pickup" android:clickable="true"></ImageView>
+		<ImageView android:id="@+id/imageView1" android:src="@drawable/progresscircle_small" android:layout_height="fill_parent" android:onClick="onClick_Pickup" android:clickable="true" android:layout_width="fill_parent" android:scaleType="centerInside"></ImageView>
 	<!-- 
 	<WebView android:layout_width="match_parent" android:id="@+id/webView1" android:layout_height="match_parent"></WebView>
 	-->
