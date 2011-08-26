@@ -13,7 +13,7 @@ public class AboutActivity extends Activity {
 		super.onCreate(savedInstanceState);				
 		setContentView(R.layout.about);		
 		
-		//Manifest¤«¤é¥Ğ¡¼¥¸¥ç¥óÌ¾¤ò¼èÆÀ¤·¤ÆÉ½¼¨
+		//Manifestã‹ã‚‰ãƒãƒ¼ã‚¸ãƒ§ãƒ³åã‚’å–å¾—ã—ã¦è¡¨ç¤º
 		try {
 		    String packegeName = getPackageName();
 		    PackageInfo packageInfo;

@@ -23,12 +23,12 @@ public class TopActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.top);
 
-    	//¥Ô¥Ã¥¯¥¢¥Ã¥×µ¯¶È²È¤Î¼Ì¿¿¤ò¼èÆÀ¤·¤ÆÉ½¼¨
+    	//ãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ—èµ·æ¥­å®¶ã®å†™çœŸã‚’å–å¾—ã—ã¦è¡¨ç¤º
     	getPickupWithJsoup();
   
 	}
 	
-	//Kiva Japan Top¥Ú¡¼¥¸¤Î¥Ô¥Ã¥¯¥¢¥Ã¥×µ¯¶È²È²èÁü¤òÉ½¼¨
+	//Kiva Japan Topãƒšãƒ¼ã‚¸ã®ãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ—èµ·æ¥­å®¶ç”»åƒã‚’è¡¨ç¤º
 	public void getPickupWithJsoup() {	
     	ImageView animWindow = (ImageView)this.findViewById(R.id.imageView1);
     	DownloadPickupTask task = new DownloadPickupTask(animWindow);  
@@ -43,13 +43,13 @@ public class TopActivity extends Activity {
 	}
 	
 	public void onClickButton1(View v) {
-		// RSS¥ê¡¼¥ÀÉ½¼¨
+		// RSSãƒªãƒ¼ãƒ€è¡¨ç¤º
 		Intent intent = new Intent(this, RssReaderActivity.class);
 		startActivity(intent);
 	}
 
 	public void onClickButton2(View v) {
-		// Kiva Japan¤Ë¤Ä¤¤¤ÆÀâÌÀ
+		// Kiva Japanã«ã¤ã„ã¦èª¬æ˜
 		Uri uri = Uri
 				.parse("http://kivajapan.jp/?page=Bureau&action=beginners");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -57,14 +57,14 @@ public class TopActivity extends Activity {
 	}
 
 	public void onClickButton3(View v) {
-		// ËİÌõ¥Ú¡¼¥¸¤Ë¥¸¥ã¥ó¥×
+		// ç¿»è¨³ãƒšãƒ¼ã‚¸ã«ã‚¸ãƒ£ãƒ³ãƒ—
 		Uri uri = Uri
 				.parse("http://kivajapan.jp/?page=Bureau&action=about_translator");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
 
-	// YouTube¤Ç¤Î¸¡º÷
+	// YouTubeã§ã®æ¤œç´¢
 	public void onClickButton4(View v) {
 		Intent intent = new Intent(Intent.ACTION_SEARCH);
 		intent.setPackage("com.google.android.youtube");
@@ -73,50 +73,50 @@ public class TopActivity extends Activity {
 		startActivity(intent);
 	}
 
-	// MENU¥Ü¥¿¥ó¤ò²¡¤·¤¿¤È¤­¤Î½èÍı
+	// MENUãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã¨ãã®å‡¦ç†
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		boolean result = super.onCreateOptionsMenu(menu);
-		// ¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï¥¢¥¤¥Æ¥à¤òÄÉ²Ã¤·¤¿½çÈÖÄÌ¤ê¤ËÉ½¼¨¤¹¤ë
+		// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ ã—ãŸé †ç•ªé€šã‚Šã«è¡¨ç¤ºã™ã‚‹
 		// menu.add(0, MENU_ITEM_RELOAD, 0, R.string.update);
 		// menu.add(0,
 		// MENU_ITEM_HELP,0,R.string.help).setIcon(android.R.drawable.ic_menu_help);
-		// ¥á¥Ë¥å¡¼¥¤¥ó¥Õ¥ì¡¼¥¿¡¼¤ò¼èÆÀ
+		// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¤ãƒ³ãƒ•ãƒ¬ãƒ¼ã‚¿ãƒ¼ã‚’å–å¾—
 		MenuInflater inflater = getMenuInflater();
-		// xml¤Î¥ê¥½¡¼¥¹¥Õ¥¡¥¤¥ë¤ò»ÈÍÑ¤·¤Æ¥á¥Ë¥å¡¼¤Ë¥¢¥¤¥Æ¥à¤òÄÉ²Ã
+		// xmlã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã—ã¦ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ 
 		inflater.inflate(R.menu.menu, menu);
-		// ¤Ç¤­¤¿¤étrue¤òÊÖ¤¹
+		// ã§ããŸã‚‰trueã‚’è¿”ã™
 		return result;
 	}
 
-	// MENU¤Î¹àÌÜ¤ò²¡¤·¤¿¤È¤­¤Î½èÍı
+	// MENUã®é …ç›®ã‚’æŠ¼ã—ãŸã¨ãã®å‡¦ç†
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
 
 		switch (item.getItemId()) {
-		// ¹¹¿·
+		// æ›´æ–°
 		case R.id.menu_update:
 			getPickupWithJsoup();
 			break;
-		// ¾ğÊó
+		// æƒ…å ±
 		case R.id.menu_info:
 			intent = new Intent(this, AboutActivity.class);
 			startActivity(intent);
 			break;
 
-		// ¥Ø¥ë¥×
+		// ãƒ˜ãƒ«ãƒ—
 		case R.id.menu_help:
 			intent = new Intent(this, HelpActivity.class);
 			startActivity(intent);
 			break;
 
-		// ¶¦Í­
+		// å…±æœ‰
 		case R.id.menu_share:
 			intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/plain");
 			// intent.putExtra(Intent.EXTRA_TEXT,
-			// "º£¡¢ËÍ¤é¤Ë¤Ç¤­¤ë¼Ò²ñ¹×¸¥³èÆ°¤¬¤³¤³¤Ë¤¢¤ê¤Ş¤¹¡£Kiva Japan¤Ï¥¤¥ó¥¿¡¼¥Í¥Ã¥È¤òÄÌ¤¸¤ÆÈ¯Å¸ÅÓ¾å¹ñ¤Îµ¯¶È²È¤ËÍ»»ñ¤Ç¤­¤ë¥µ¥¤¥È¤Ç¤¹¡£");
+			// "ä»Šã€åƒ•ã‚‰ã«ã§ãã‚‹ç¤¾ä¼šè²¢çŒ®æ´»å‹•ãŒã“ã“ã«ã‚ã‚Šã¾ã™ã€‚Kiva Japanã¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒƒãƒˆã‚’é€šã˜ã¦ç™ºå±•é€”ä¸Šå›½ã®èµ·æ¥­å®¶ã«èè³‡ã§ãã‚‹ã‚µã‚¤ãƒˆã§ã™ã€‚");
 //			intent.putExtra(Intent.EXTRA_TEXT, "http://kivajapan.jp/");
 			intent.putExtra(Intent.EXTRA_TEXT, "https://sites.google.com/site/kivajapanrssreader/");
 			// intent.putExtra(Intent.EXTRA_STREAM,
@@ -134,7 +134,7 @@ public class TopActivity extends Activity {
 						.show();
 			}
 			break;
-		// ¸¡º÷
+		// æ¤œç´¢
 		case R.id.menu_search:
 			intent = new Intent(Intent.ACTION_SEARCH);
 			// intent.getStringExtra(SearchManager.QUERY);

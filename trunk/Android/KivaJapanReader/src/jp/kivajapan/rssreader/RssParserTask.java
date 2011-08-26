@@ -20,16 +20,16 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 	private RssListAdapter mAdapter;
 //	private ProgressDialog mProgressDialog;
 
-	// ¥³¥ó¥¹¥È¥é¥¯¥¿
+	// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	public RssParserTask(RssReaderActivity activity, RssListAdapter adapter) {
 		mActivity = activity;
 		mAdapter = adapter;
 	}
 
-	// ¥¿¥¹¥¯¤ò¼Â¹Ô¤·¤¿Ä¾¸å¤Ë¥³¡¼¥ë¤µ¤ì¤ë
+	// ã‚¿ã‚¹ã‚¯ã‚’å®Ÿè¡Œã—ãŸç›´å¾Œã«ã‚³ãƒ¼ãƒ«ã•ã‚Œã‚‹
 	@Override
 	protected void onPreExecute() {
-		// ¥×¥í¥°¥ì¥¹¥Ğ¡¼¤òÉ½¼¨¤¹¤ë
+		// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹
 //		mProgressDialog = new ProgressDialog(mActivity);
 ////		mProgressDialog.setTitle(R.string.update);
 //		mProgressDialog.setMessage("Now loding...");
@@ -37,37 +37,37 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 //		mProgressDialog.show();
 	}
 
-	// ¥Ğ¥Ã¥¯¥°¥é¥¦¥ó¥É¤Ë¤ª¤±¤ë½èÍı¤òÃ´¤¦¡£¥¿¥¹¥¯¼Â¹Ô»ş¤ËÅÏ¤µ¤ì¤¿ÃÍ¤ò°ú¿ô¤È¤¹¤ë
+	// ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã«ãŠã‘ã‚‹å‡¦ç†ã‚’æ‹…ã†ã€‚ã‚¿ã‚¹ã‚¯å®Ÿè¡Œæ™‚ã«æ¸¡ã•ã‚ŒãŸå€¤ã‚’å¼•æ•°ã¨ã™ã‚‹
 	@Override
 	protected RssListAdapter doInBackground(String... params) {
 		RssListAdapter result = null;
 		try {
-			// HTTP·ĞÍ³¤Ç¥¢¥¯¥»¥¹¤·¡¢InputStream¤ò¼èÆÀ¤¹¤ë
+			// HTTPçµŒç”±ã§ã‚¢ã‚¯ã‚»ã‚¹ã—ã€InputStreamã‚’å–å¾—ã™ã‚‹
 			URL url = new URL(params[0]);
 			InputStream is = url.openConnection().getInputStream();
 			result = parseXml(is);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// ¤³¤³¤ÇÊÖ¤·¤¿ÃÍ¤Ï¡¢onPostExecute¥á¥½¥Ã¥É¤Î°ú¿ô¤È¤·¤ÆÅÏ¤µ¤ì¤ë
+		// ã“ã“ã§è¿”ã—ãŸå€¤ã¯ã€onPostExecuteãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã¨ã—ã¦æ¸¡ã•ã‚Œã‚‹
 		return result;
 	}
 
-	// ¥á¥¤¥ó¥¹¥ì¥Ã¥É¾å¤Ç¼Â¹Ô¤µ¤ì¤ë
+	// ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ä¸Šã§å®Ÿè¡Œã•ã‚Œã‚‹
 	@Override
 	protected void onPostExecute(RssListAdapter result) {
 //		mProgressDialog.dismiss();
 		mActivity.setListAdapter(result);
 	}
 
-	// XML¤ò¥Ñ¡¼¥¹¤¹¤ë
+	// XMLã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹
 	public RssListAdapter parseXml(InputStream is) throws IOException, XmlPullParserException {
 		XmlPullParser parser = Xml.newPullParser();
-		//parser.setProperty(XmlPullParser.FEATURE_VALIDATION , true);¡¡//¤¹¤°¤Ë¥Ñ¡¼¥¹¥¨¥é¡¼¤Ë¤Ê¤Ã¤Æ¤·¤Ş¤¦
+		//parser.setProperty(XmlPullParser.FEATURE_VALIDATION , true);ã€€//ã™ãã«ãƒ‘ãƒ¼ã‚¹ã‚¨ãƒ©ãƒ¼ã«ãªã£ã¦ã—ã¾ã†
 		try {
 //			parser.setInput(is, null);
-			// Kiva Japan¤Î¥Õ¥£¡¼¥É¤ÏUTF-8¤À¤¬¡¢¥´¥ß(0x3E)¤¬´Ş¤Ş¤ì¤ë°Ù¡¢not well-formed¤È¤Ê¤ê¥Ñ¡¼¥¹¤Ë¼ºÇÔ¤¹¤ë
-			// ISO-8859-1¤È¤·¤Æ¥Ñ¡¼¥¹¤¹¤ì¤ĞÀ®¸ù¤¹¤ë¤¬Ê¸»ú²½¤±¤¹¤ë°Ù¡¢getBytes¤ÇUTF-8¤ËÊÑ´¹¤¹¤ë
+			// Kiva Japanã®ãƒ•ã‚£ãƒ¼ãƒ‰ã¯UTF-8ã ãŒã€ã‚´ãƒŸ(0x3E)ãŒå«ã¾ã‚Œã‚‹ç‚ºã€not well-formedã¨ãªã‚Šãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã™ã‚‹
+			// ISO-8859-1ã¨ã—ã¦ãƒ‘ãƒ¼ã‚¹ã™ã‚Œã°æˆåŠŸã™ã‚‹ãŒæ–‡å­—åŒ–ã‘ã™ã‚‹ç‚ºã€getBytesã§UTF-8ã«å¤‰æ›ã™ã‚‹
 			parser.setInput(is, "ISO-8859-1");
 			int eventType = parser.getEventType();
 			Item currentItem = null;
@@ -82,28 +82,28 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 						} else if (currentItem != null) {
 							if (tag.equals("title")) {
 //								currentItem.setTitle(parser.nextText());
-								// ISO-8859-1¤È¤·¤Æ¥Ñ¡¼¥¹¤¹¤ì¤ĞÀ®¸ù¤¹¤ë¤¬Ê¸»ú²½¤±¤¹¤ë°Ù¡¢getBytes¤ÇUTF-8¤ËÊÑ´¹¤¹¤ë
+								// ISO-8859-1ã¨ã—ã¦ãƒ‘ãƒ¼ã‚¹ã™ã‚Œã°æˆåŠŸã™ã‚‹ãŒæ–‡å­—åŒ–ã‘ã™ã‚‹ç‚ºã€getBytesã§UTF-8ã«å¤‰æ›ã™ã‚‹
 								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
 								currentItem.setTitle(str);
 							} else if (tag.equals("link")) {
-								//<link>Í×ÁÇ¤ÎhrefÂ°À­¤ò¼èÆÀ
+								//<link>è¦ç´ ã®hrefå±æ€§ã‚’å–å¾—
 								currentItem.setLink(parser.getAttributeValue(null,"href"));
-							} else if (tag.equals("description")) {
-								currentItem.setDescription(parser.nextText());
+//							} else if (tag.equals("description")) {
+//								currentItem.setDescription(parser.nextText());
 							} else if (tag.equals("summary")) {
-								// ISO-8859-1¤È¤·¤Æ¥Ñ¡¼¥¹¤¹¤ì¤ĞÀ®¸ù¤¹¤ë¤¬Ê¸»ú²½¤±¤¹¤ë°Ù¡¢getBytes¤ÇUTF-8¤ËÊÑ´¹¤¹¤ë
+								// ISO-8859-1ã¨ã—ã¦ãƒ‘ãƒ¼ã‚¹ã™ã‚Œã°æˆåŠŸã™ã‚‹ãŒæ–‡å­—åŒ–ã‘ã™ã‚‹ç‚ºã€getBytesã§UTF-8ã«å¤‰æ›ã™ã‚‹
 								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
 								currentItem.setSummary(str);
 							} else if (tag.equals("name")) {
-								// ISO-8859-1¤È¤·¤Æ¥Ñ¡¼¥¹¤¹¤ì¤ĞÀ®¸ù¤¹¤ë¤¬Ê¸»ú²½¤±¤¹¤ë°Ù¡¢getBytes¤ÇUTF-8¤ËÊÑ´¹¤¹¤ë
+								// ISO-8859-1ã¨ã—ã¦ãƒ‘ãƒ¼ã‚¹ã™ã‚Œã°æˆåŠŸã™ã‚‹ãŒæ–‡å­—åŒ–ã‘ã™ã‚‹ç‚ºã€getBytesã§UTF-8ã«å¤‰æ›ã™ã‚‹
 								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
 								currentItem.setAuthor(str);
 							} else if (tag.equals("content")) {
-								// ISO-8859-1¤È¤·¤Æ¥Ñ¡¼¥¹¤¹¤ì¤ĞÀ®¸ù¤¹¤ë¤¬Ê¸»ú²½¤±¤¹¤ë°Ù¡¢getBytes¤ÇUTF-8¤ËÊÑ´¹¤¹¤ë
+								// ISO-8859-1ã¨ã—ã¦ãƒ‘ãƒ¼ã‚¹ã™ã‚Œã°æˆåŠŸã™ã‚‹ãŒæ–‡å­—åŒ–ã‘ã™ã‚‹ç‚ºã€getBytesã§UTF-8ã«å¤‰æ›ã™ã‚‹
 								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
 								currentItem.setContent(str);
 								
-								// img¥¿¥°¤«¤é²èÁü¤ÎURL¤ò¼èÆÀ¤¹¤ë
+								// imgã‚¿ã‚°ã‹ã‚‰ç”»åƒã®URLã‚’å–å¾—ã™ã‚‹
 								currentItem.setImage(getImage(str));
 							}
 						}
@@ -124,7 +124,7 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 		return mAdapter;
 	}
 
-	//HTML¤ò¥Ñ¡¼¥¹¤·¤Æµ¯¶È²È¤Î²èÁü¤ÎURI¤ò¼èÆÀ
+	//HTMLã‚’ãƒ‘ãƒ¼ã‚¹ã—ã¦èµ·æ¥­å®¶ã®ç”»åƒã®URIã‚’å–å¾—
 	public String getImage(String html){
 		String linkHref = null;
 		Document doc = Jsoup.parse(html);

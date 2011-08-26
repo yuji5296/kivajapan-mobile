@@ -20,7 +20,7 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	// 1¹Ô¤´¤È¤Î¥Ó¥å¡¼¤òÀ¸À®¤¹¤ë
+	// 1è¡Œã”ã¨ã®ãƒ“ãƒ¥ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = convertView;
 
@@ -28,28 +28,28 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 			view = mInflater.inflate(R.layout.item_row, null);
 		}
 
-		// ¸½ºß»²¾È¤·¤Æ¤¤¤ë¥ê¥¹¥È¤Î°ÌÃÖ¤«¤éItem¤ò¼èÆÀ¤¹¤ë
+		// ç¾åœ¨å‚ç…§ã—ã¦ã„ã‚‹ãƒªã‚¹ãƒˆã®ä½ç½®ã‹ã‚‰Itemã‚’å–å¾—ã™ã‚‹
 		Item item = this.getItem(position);
 		if (item != null) {
-			// Item¤«¤éÉ¬Í×¤Ê¥Ç¡¼¥¿¤ò¼è¤ê½Ğ¤·¡¢¤½¤ì¤¾¤ìTextView¤Ë¥»¥Ã¥È¤¹¤ë
-			// ¥¿¥¤¥È¥ë¤Î¼èÆÀ
+			// Itemã‹ã‚‰å¿…è¦ãªãƒ‡ãƒ¼ã‚¿ã‚’å–ã‚Šå‡ºã—ã€ãã‚Œãã‚ŒTextViewã«ã‚»ãƒƒãƒˆã™ã‚‹
+			// ã‚¿ã‚¤ãƒˆãƒ«ã®å–å¾—
 			String title = item.getTitle().toString();
 			mTitle = (TextView) view.findViewById(R.id.item_title);
 			mTitle.setText(title);
 			
-			// ËİÌõ¼Ô¤Î¼èÆÀ
-			String author = "ËİÌõ¼Ô¡§" + item.getAuthor().toString();
+			// ç¿»è¨³è€…ã®å–å¾—
+			String author = "ç¿»è¨³è€…ï¼š" + item.getAuthor().toString();
 			mTitle = (TextView) view.findViewById(R.id.item_author);
 			mTitle.setText(author);
 			
-			// Í×Ìó¤Î¼èÆÀ
+			// è¦ç´„ã®å–å¾—
 //			String descr = item.getDescription().toString();
 			String summary = item.getSummary().toString();
 			mDescr = (TextView) view.findViewById(R.id.item_descr);
 			mDescr.setText(summary);
 
-			// ²èÁü¤Î¼èÆÀ
-			// ËİÌõ¼Ô¤Î¼Ì¿¿¤òRSS¤«¤é¼èÆÀ¤·¤ÆÉ½¼¨¤·¤è¤¦¤È¤·¤¿¤¬img¥¿¥°¤Îsrc¤ò¼èÆÀ¤Ç¤­¤Ê¤¤ 
+			// ç”»åƒã®å–å¾—
+			// ç¿»è¨³è€…ã®å†™çœŸã‚’RSSã‹ã‚‰å–å¾—ã—ã¦è¡¨ç¤ºã—ã‚ˆã†ã¨ã—ãŸãŒimgã‚¿ã‚°ã®srcã‚’å–å¾—ã§ããªã„ 
 			String image = item.getImage().toString();
 //			String image = "http://www.kiva.org/img/w80h80/674364.jpg";
 //			Uri uri = Uri.parse(image);

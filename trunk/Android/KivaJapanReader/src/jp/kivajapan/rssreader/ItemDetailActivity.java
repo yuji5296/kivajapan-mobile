@@ -30,28 +30,29 @@ public class ItemDetailActivity extends Activity {
 		
 		Intent intent = getIntent();
 
-		//¥¿¥¤¥È¥ë¤ò¥»¥Ã¥È
+		//ã‚¿ã‚¤ãƒˆãƒ«ã‚’ã‚»ãƒƒãƒˆ
 		title = intent.getStringExtra("TITLE");
 		mTitle = (TextView) findViewById(R.id.item_detail_title);
 		mTitle.setText(title);
 
-		//ËİÌõ¼Ô¤ò¥»¥Ã¥È
+		//ç¿»è¨³è€…ã‚’ã‚»ãƒƒãƒˆ
 		author = intent.getStringExtra("AUTHOR");
 		mAuthor = (TextView) findViewById(R.id.item_detail_author);
-		mAuthor.setText("ËİÌõ¼Ô¡§" + author);
+		mAuthor.setText("ç¿»è¨³è€…ï¼š" + author);
 
-		//ËÜÊ¸¤ò¥»¥Ã¥È
+		//æœ¬æ–‡ã‚’ã‚»ãƒƒãƒˆ
 //		String descr = intent.getStringExtra("DESCRIPTION");
 //		mDescr = (TextView) findViewById(R.id.item_detail_descr);
 //		mDescr.setText(descr);		
 		String descr = intent.getStringExtra("CONTENT");
 		mContent = (WebView) findViewById(R.id.WebView01);
 		//CharSequence sHtml = Html.fromHtml(descr);
-//		mContent.loadDataWithBaseURL(null, descr, "text/html", "UTF-8", null);
-		mContent.loadData(descr, "text/html", "UTF-8");
-		//webViewLoadData(mContent, descr);
+		mContent.loadDataWithBaseURL(null, descr, "text/html", "utf-8", null);
+		// loadDataã ã¨1.6ã§ã¯è‰¯ã„ãŒã€2.3.3ã§æ–‡å­—åŒ–ã‘
+//		mContent.loadData(descr, "text/html", "utf-8");
+//		webViewLoadData(mContent, descr);
 
-		//URL¤ò¥»¥Ã¥È
+		//URLã‚’ã‚»ãƒƒãƒˆ
 		mLink = intent.getStringExtra("LINK");
 		
 	}
@@ -72,55 +73,55 @@ public class ItemDetailActivity extends Activity {
         web.loadData(buf.toString(), "text/html", "utf-8");
     }
 
-    // MENU¥Ü¥¿¥ó¤ò²¡¤·¤¿¤È¤­¤Î½èÍı
+    // MENUãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã¨ãã®å‡¦ç†
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		boolean result = super.onCreateOptionsMenu(menu);
-		// ¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï¥¢¥¤¥Æ¥à¤òÄÉ²Ã¤·¤¿½çÈÖÄÌ¤ê¤ËÉ½¼¨¤¹¤ë
+		// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ ã—ãŸé †ç•ªé€šã‚Šã«è¡¨ç¤ºã™ã‚‹
 //		menu.add(0, MENU_ITEM_RELOAD, 0, R.string.update);
 //		menu.add(0, MENU_ITEM_HELP,0,R.string.help).setIcon(android.R.drawable.ic_menu_help);
-    	//¥á¥Ë¥å¡¼¥¤¥ó¥Õ¥ì¡¼¥¿¡¼¤ò¼èÆÀ
+    	//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¤ãƒ³ãƒ•ãƒ¬ãƒ¼ã‚¿ãƒ¼ã‚’å–å¾—
     	MenuInflater inflater = getMenuInflater();
-    	//xml¤Î¥ê¥½¡¼¥¹¥Õ¥¡¥¤¥ë¤ò»ÈÍÑ¤·¤Æ¥á¥Ë¥å¡¼¤Ë¥¢¥¤¥Æ¥à¤òÄÉ²Ã
+    	//xmlã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã—ã¦ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ 
     	inflater.inflate(R.menu.menu_detail, menu);
-    	//¤Ç¤­¤¿¤étrue¤òÊÖ¤¹
+    	//ã§ããŸã‚‰trueã‚’è¿”ã™
 		return result;
 	}
 
-	// MENU¤Î¹àÌÜ¤ò²¡¤·¤¿¤È¤­¤Î½èÍı
+	// MENUã®é …ç›®ã‚’æŠ¼ã—ãŸã¨ãã®å‡¦ç†
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
 
 		switch (item.getItemId()) {
-			// Í»»ñ¡ÊWeb¥µ¥¤¥È¤ËÀÜÂ³¡Ë
+			// èè³‡ï¼ˆWebã‚µã‚¤ãƒˆã«æ¥ç¶šï¼‰
 			case R.id.menu_loan:
 				//Toast.makeText(this, mLink, Toast.LENGTH_LONG).show();
 
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
-				alert.setTitle("Í»»ñ");
-				alert.setMessage("Kiva¤Î¥µ¥¤¥È¤«¤é¡¢¤³¤Îµ¯¶È²È¤ËÍ»»ñ¤·¤Ş¤¹¤«¡©");
-				alert.setPositiveButton("¤Ï¤¤",
+				alert.setTitle("èè³‡");
+				alert.setMessage("Kivaã®ã‚µã‚¤ãƒˆã‹ã‚‰ã€ã“ã®èµ·æ¥­å®¶ã«èè³‡ã—ã¾ã™ã‹ï¼Ÿ");
+				alert.setPositiveButton("ã¯ã„",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
-								// Yes¥Ü¥¿¥ó¤¬²¡¤µ¤ì¤¿»ş¤Î½èÍı
-								// Browser¤òµ¯Æ°
+								// Yesãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
+								// Browserã‚’èµ·å‹•
 								Uri uri = Uri.parse(mLink);
 								Intent intent = new Intent(Intent.ACTION_VIEW,uri);
 								startActivity(intent);
 							}
 						});
-				alert.setNegativeButton("¤¤¤¤¤¨",
+				alert.setNegativeButton("ã„ã„ãˆ",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
-								// No¥Ü¥¿¥ó¤¬²¡¤µ¤ì¤¿»ş¤Î½èÍı
-								Toast.makeText(ItemDetailActivity.this, "»ÄÇ°¤Ç¤¹¡£¤Ş¤¿¤Îµ¡²ñ¤ò¤ªÂÔ¤Á¤·¤Æ¤ª¤ê¤Ş¤¹¡£",
+								// Noãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
+								Toast.makeText(ItemDetailActivity.this, "æ®‹å¿µã§ã™ã€‚ã¾ãŸã®æ©Ÿä¼šã‚’ãŠå¾…ã¡ã—ã¦ãŠã‚Šã¾ã™ã€‚",
 										Toast.LENGTH_LONG).show();
 							}
 						});
 				alert.show();
 				break;
-				// ¶¦Í­
+				// å…±æœ‰
 			case R.id.menu_share:
 			    intent = new Intent(Intent.ACTION_SEND);
 			    intent.setType("text/plain");  
@@ -138,7 +139,7 @@ public class ItemDetailActivity extends Activity {
 			      Toast.makeText(this, "client not found", Toast.LENGTH_LONG).show();
 			    }
 				break;
-			// ¸¡º÷
+			// æ¤œç´¢
 			case R.id.menu_search:
 				intent = new Intent(Intent.ACTION_SEARCH);
 //				intent.getStringExtra(SearchManager.QUERY);
