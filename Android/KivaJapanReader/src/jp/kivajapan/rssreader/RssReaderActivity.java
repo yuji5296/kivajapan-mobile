@@ -32,28 +32,28 @@ public class RssReaderActivity extends ListActivity {
 
 //        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
 
-    	// ¥¢¥Ë¥á¡¼¥·¥ç¥ó¤¹¤ë¥¤¥á¡¼¥¸¤ò¼èÆÀ
+    	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‹ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’å–å¾—
     	ImageView animWindow = (ImageView)findViewById(R.id.ImageView01);
 
-    	// ¥¢¥Ë¥á¡¼¥·¥ç¥ó¥ê¥½¡¼¥¹¤ò¥í¡¼¥É
+    	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰
     	Animation anim = AnimationUtils.loadAnimation(this, R.anim.progresscircle);
     	anim.setRepeatMode(Animation.RESTART);
 
-    	// ¥¢¥Ë¥á¡¼¥·¥ç¥ó³«»Ï
+    	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é–‹å§‹
     	animWindow.startAnimation(anim);
         
-		// Item¥ª¥Ö¥¸¥§¥¯¥È¤òÊİ»ı¤¹¤ë¤¿¤á¤Î¥ê¥¹¥È¤òÀ¸À®¤·¡¢¥¢¥À¥×¥¿¤ËÄÉ²Ã¤¹¤ë
+		// Itemã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¿æŒã™ã‚‹ãŸã‚ã®ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã—ã€ã‚¢ãƒ€ãƒ—ã‚¿ã«è¿½åŠ ã™ã‚‹
 		mItems = new ArrayList<Item>();
 		mAdapter = new RssListAdapter(this, mItems);
 
-		// ¥¿¥¹¥¯¤òµ¯Æ°¤¹¤ë
+		// ã‚¿ã‚¹ã‚¯ã‚’èµ·å‹•ã™ã‚‹
 		RssParserTask task = new RssParserTask(this, mAdapter);
 		task.execute(RSS_FEED_URL);
 
-		// ¥¢¥À¥×¥¿¤ò¥ê¥¹¥È¥Ó¥å¡¼¤Ë¥»¥Ã¥È¤¹¤ë
+		// ã‚¢ãƒ€ãƒ—ã‚¿ã‚’ãƒªã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ã«ã‚»ãƒƒãƒˆã™ã‚‹
 		//setListAdapter(mAdapter);
 
-		// ¥µ¥ó¥×¥ëÍÑ¤Ë¶õ¤ÎItem¥ª¥Ö¥¸¥§¥¯¥È¤ò¥»¥Ã¥È¤¹¤ë
+		// ã‚µãƒ³ãƒ—ãƒ«ç”¨ã«ç©ºã®Itemã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚»ãƒƒãƒˆã™ã‚‹
 		//for (int i = 0; i < 10; i++) {
 			//mAdapter.add(new Item());
 		//}
@@ -93,75 +93,75 @@ public class RssReaderActivity extends ListActivity {
 //        Toast.makeText(this, "onDestroy()", Toast.LENGTH_SHORT).show();
 //    }
     
-	// ¥ê¥¹¥È¤Î¹àÌÜ¤òÁªÂò¤·¤¿»ş¤Î½èÍı
+	// ãƒªã‚¹ãƒˆã®é …ç›®ã‚’é¸æŠã—ãŸæ™‚ã®å‡¦ç†
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Item item = mItems.get(position);
 		Intent intent = new Intent(this, ItemDetailActivity.class);
 		intent.putExtra("TITLE", item.getTitle());
-		intent.putExtra("DESCRIPTION", item.getDescription());
+//		intent.putExtra("DESCRIPTION", item.getDescription());
 		intent.putExtra("CONTENT", item.getContent());
 		intent.putExtra("AUTHOR", item.getAuthor());
 		intent.putExtra("LINK", item.getLink());
 		startActivity(intent);
 	}
 	
-	// MENU¥Ü¥¿¥ó¤ò²¡¤·¤¿¤È¤­¤Î½èÍı
+	// MENUãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã¨ãã®å‡¦ç†
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		boolean result = super.onCreateOptionsMenu(menu);
-		// ¥Ç¥Õ¥©¥ë¥È¤Ç¤Ï¥¢¥¤¥Æ¥à¤òÄÉ²Ã¤·¤¿½çÈÖÄÌ¤ê¤ËÉ½¼¨¤¹¤ë
+		// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ ã—ãŸé †ç•ªé€šã‚Šã«è¡¨ç¤ºã™ã‚‹
 //		menu.add(0, MENU_ITEM_RELOAD, 0, R.string.update);
 //		menu.add(0, MENU_ITEM_HELP,0,R.string.help).setIcon(android.R.drawable.ic_menu_help);
-    	//¥á¥Ë¥å¡¼¥¤¥ó¥Õ¥ì¡¼¥¿¡¼¤ò¼èÆÀ
+    	//ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚¤ãƒ³ãƒ•ãƒ¬ãƒ¼ã‚¿ãƒ¼ã‚’å–å¾—
     	MenuInflater inflater = getMenuInflater();
-    	//xml¤Î¥ê¥½¡¼¥¹¥Õ¥¡¥¤¥ë¤ò»ÈÍÑ¤·¤Æ¥á¥Ë¥å¡¼¤Ë¥¢¥¤¥Æ¥à¤òÄÉ²Ã
+    	//xmlã®ãƒªã‚½ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã—ã¦ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¿½åŠ 
     	inflater.inflate(R.menu.menu, menu);
-    	//¤Ç¤­¤¿¤étrue¤òÊÖ¤¹
+    	//ã§ããŸã‚‰trueã‚’è¿”ã™
 		return result;
 	}
 
-	// MENU¤Î¹àÌÜ¤ò²¡¤·¤¿¤È¤­¤Î½èÍı
+	// MENUã®é …ç›®ã‚’æŠ¼ã—ãŸã¨ãã®å‡¦ç†
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
 
 		switch (item.getItemId()) {
-			// ¹¹¿·
+			// æ›´æ–°
 			case R.id.menu_update:
 
-				//ListView¤ÎÉ½¼¨¤òempty¤ËÊÑ¹¹¤¹¤ë
-				// ¥¢¥À¥×¥¿¤ò½é´ü²½¤·¡¢¥¿¥¹¥¯¤òµ¯Æ°¤¹¤ë
+				//ListViewã®è¡¨ç¤ºã‚’emptyã«å¤‰æ›´ã™ã‚‹
+				// ã‚¢ãƒ€ãƒ—ã‚¿ã‚’åˆæœŸåŒ–ã—ã€ã‚¿ã‚¹ã‚¯ã‚’èµ·å‹•ã™ã‚‹
 //				mItems.clear();
 				mAdapter.clear();
 //				mItems = new ArrayList<Item>();
 				mAdapter = new RssListAdapter(this, mItems);
-//				//Adapter¤Î¹¹¿·
+//				//Adapterã®æ›´æ–°
 //				mAdapter.notifyDataSetChanged();
-//				//ListView¤Î¹¹¿·
+//				//ListViewã®æ›´æ–°
 //				listview = getListView();
 //				listview.invalidateViews();
 //				listview.invalidate();
 				
-				// ¥¿¥¹¥¯¤Ï¤½¤ÎÅÔÅÙÀ¸À®¤¹¤ë
+				// ã‚¿ã‚¹ã‚¯ã¯ãã®éƒ½åº¦ç”Ÿæˆã™ã‚‹
 				RssParserTask task = new RssParserTask(this, mAdapter);
 				task.execute(RSS_FEED_URL);
 
-				//É½¼¨¸å¥ê¥¹¥È¤Î¥¹¥¿¥¤¥ë¤¬Å¬ÍÑ¤µ¤ì¤Ê¤¤
-				//list_row_background.xml¤ò½¤Àµ¤Ç²ò·è
-				//android:state_window_focused="false"¤Î¾ì¹ç¤ËÇØ·Ê¿§¤òÆ©²á¤Ë¤¹¤ëÀßÄê¤òÌµ¸ú²½
-				//¹¹¿·»ş¤Ëandroid:state_window_focused¤òtrue¤Ë¤¹¤ì¤ĞÎÉ¤¤¡©
+				//è¡¨ç¤ºå¾Œãƒªã‚¹ãƒˆã®ã‚¹ã‚¿ã‚¤ãƒ«ãŒé©ç”¨ã•ã‚Œãªã„
+				//list_row_background.xmlã‚’ä¿®æ­£ã§è§£æ±º
+				//android:state_window_focused="false"ã®å ´åˆã«èƒŒæ™¯è‰²ã‚’é€éã«ã™ã‚‹è¨­å®šã‚’ç„¡åŠ¹åŒ–
+				//æ›´æ–°æ™‚ã«android:state_window_focusedã‚’trueã«ã™ã‚Œã°è‰¯ã„ï¼Ÿ
 				
 				break;
 //				return true;
-			// ¾ğÊó
+			// æƒ…å ±
 			case R.id.menu_info:
 				intent = new Intent(this, AboutActivity.class);
 				startActivity(intent);
 				break;
 //				return true;
 				
-			// ¥Ø¥ë¥×
+			// ãƒ˜ãƒ«ãƒ—
 			case R.id.menu_help:
 				intent = new Intent(this, HelpActivity.class);
 				startActivity(intent);

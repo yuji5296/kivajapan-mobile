@@ -16,22 +16,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-//URI¤Ç»ØÄê¤·¤¿²èÁü¤òÆÉ¤ß¹ş¤ßImageView¤ËÉ½¼¨¤¹¤ë¡£
+//URIã§æŒ‡å®šã—ãŸç”»åƒã‚’èª­ã¿è¾¼ã¿ImageViewã«è¡¨ç¤ºã™ã‚‹ã€‚
 public class DownloadTask extends AsyncTask<String, Void, Bitmap> {  
-    // ¥¢¥¤¥³¥ó¤òÉ½¼¨¤¹¤ë¥Ó¥å¡¼  
+    // ã‚¢ã‚¤ã‚³ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹ãƒ“ãƒ¥ãƒ¼  
     private ImageView imageView;  
   
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿  
+    // ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿  
     public DownloadTask(ImageView imageView) {
         this.imageView = imageView;
-    	// ¥×¥í¥°¥ì¥¹²èÁü¤òÉ½¼¨¡Ê¹¹¿·»ş¤ËÉ½¼¨¤¹¤ë°Ù¤Ë¤³¤³¤ÇÀßÄê¡Ë
+    	// ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ç”»åƒã‚’è¡¨ç¤ºï¼ˆæ›´æ–°æ™‚ã«è¡¨ç¤ºã™ã‚‹ç‚ºã«ã“ã“ã§è¨­å®šï¼‰
         this.imageView.setImageResource(R.drawable.progresscircle_small);
 
-    	// ¥¢¥Ë¥á¡¼¥·¥ç¥ó¥ê¥½¡¼¥¹¤ò¥í¡¼¥É
+    	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ­ãƒ¼ãƒ‰
         Animation anim = AnimationUtils.loadAnimation(this.imageView.getContext(), R.anim.progresscircle);
     	anim.setRepeatMode(Animation.RESTART);
 
-    	// ¥¢¥Ë¥á¡¼¥·¥ç¥ó³«»Ï
+    	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é–‹å§‹
     	this.imageView.startAnimation(anim);
 
     }  
@@ -40,11 +40,11 @@ public class DownloadTask extends AsyncTask<String, Void, Bitmap> {
     	
 	}
 
-    // ¥Ğ¥Ã¥¯¥°¥é¥¦¥ó¥É¤Ç¼Â¹Ô¤¹¤ë½èÍı  
+    // ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã§å®Ÿè¡Œã™ã‚‹å‡¦ç†  
     @Override  
     protected Bitmap doInBackground(String... urls) {  
 
-    	// ¥Ô¥Ã¥¯¥¢¥Ã¥×µ¯¶È²È¤Î¼Ì¿¿¤òÉ½¼¨¤¹¤ë
+    	// ãƒ”ãƒƒã‚¯ã‚¢ãƒƒãƒ—èµ·æ¥­å®¶ã®å†™çœŸã‚’è¡¨ç¤ºã™ã‚‹
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpResponse httpResponse = null;
 		try {
@@ -75,7 +75,7 @@ public class DownloadTask extends AsyncTask<String, Void, Bitmap> {
 		return bitm;  
     }  
   
-    // ¥á¥¤¥ó¥¹¥ì¥Ã¥É¤Ç¼Â¹Ô¤¹¤ë½èÍı  
+    // ãƒ¡ã‚¤ãƒ³ã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œã™ã‚‹å‡¦ç†  
     @Override  
     protected void onPostExecute(Bitmap result) {  
     	this.imageView.clearAnimation();

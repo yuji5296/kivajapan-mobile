@@ -1,39 +1,39 @@
 package jp.kivajapan.rssreader;
 
 public class Item {
-	// µ­»ö¤Î¥¿¥¤¥È¥ë
+	// è¨˜äº‹ã®ã‚¿ã‚¤ãƒˆãƒ«
 	private CharSequence mTitle;
 	// URL
 	private CharSequence mLink;
-	// µ­»ö¤ÎËÜÊ¸
-	private CharSequence mDescription;
-	// µ­»ö¤ÎÍ×Ìó
+	// è¨˜äº‹ã®æœ¬æ–‡
+//	private CharSequence mDescription;
+	// è¨˜äº‹ã®è¦ç´„
 	private CharSequence mSummary;
-	// µ­»ö¤ÎËÜÊ¸
-	private CharSequence mContent;
-	// ËİÌõ¼Ô
+	// è¨˜äº‹ã®æœ¬æ–‡
+	private String mContent;
+	// ç¿»è¨³è€…
 	private CharSequence mAuthor;
-	// ²èÁü
+	// ç”»åƒ
 	private CharSequence mImage;
 
 	public Item() {
 		mTitle = "";
 		mLink = "";
-		mDescription = "";
+//		mDescription = "";
 		mSummary = "";
 		mContent = "";
 		mAuthor = "";
 		mImage = "";
 	}
 
-	public CharSequence getDescription() {
-		return mDescription;
-	}
-	public void setDescription(CharSequence description) {
-		mDescription = description;
-	}
+//	public CharSequence getDescription() {
+//		return mDescription;
+//	}
+//	public void setDescription(CharSequence description) {
+//		mDescription = description;
+//	}
 
-	//¥¿¥¤¥È¥ë¤Î¼èÆÀ¡¦ÀßÄê
+	//ã‚¿ã‚¤ãƒˆãƒ«ã®å–å¾—ãƒ»è¨­å®š
 	public CharSequence getTitle() {
 		return mTitle;
 	}
@@ -41,7 +41,7 @@ public class Item {
 		mTitle = title;
 	}
 
-	//URL¤Î¼èÆÀ¡¦ÀßÄê
+	//URLã®å–å¾—ãƒ»è¨­å®š
 	public CharSequence getLink() {
 		return mLink;
 	}
@@ -50,7 +50,7 @@ public class Item {
 	}
 
 	
-	//Í×Ìó¤Î¼èÆÀ¡¦ÀßÄê
+	//è¦ç´„ã®å–å¾—ãƒ»è¨­å®š
 	public CharSequence getSummary() {
 		return mSummary;
 	}
@@ -58,15 +58,15 @@ public class Item {
 		mSummary = summary;
 	}
 
-	//ËÜÊ¸¤Î¼èÆÀ¡¦ÀßÄê
+	//æœ¬æ–‡ã®å–å¾—ãƒ»è¨­å®š
 	public CharSequence getContent() {
 		return mContent;
 	}
-	public void setContent(CharSequence content) {
+	public void setContent(String content) {
 		mContent = content;
 	}
 
-	//ËİÌõ¼Ô¤Î¼èÆÀ¡¦ÀßÄê
+	//ç¿»è¨³è€…ã®å–å¾—ãƒ»è¨­å®š
 	public CharSequence getAuthor() {
 		return mAuthor;
 	}
@@ -74,7 +74,7 @@ public class Item {
 		mAuthor = author;
 	}
 
-	//²èÁü¤Î¼èÆÀ¡¦ÀßÄê
+	//ç”»åƒã®å–å¾—ãƒ»è¨­å®š
 	public CharSequence getImage() {
 		return mImage;
 	}
