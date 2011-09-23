@@ -99,23 +99,28 @@ public class ItemDetailActivity extends Activity {
 				//Toast.makeText(this, mLink, Toast.LENGTH_LONG).show();
 
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
-				alert.setTitle("融資");
-				alert.setMessage("Kivaのサイトから、この起業家に融資しますか？");
-				alert.setPositiveButton("はい",
+				alert.setTitle(getString(R.string.loan));
+				alert.setMessage(getString(R.string.message_loan_confirm));
+				alert.setPositiveButton(getString(R.string.yes),
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
 								// Yesボタンが押された時の処理
 								// Browserを起動
-								Uri uri = Uri.parse(mLink);
+//								Uri uri = Uri.parse(mLink);
+								// URLから企業家IDを取得
+								String[] str = mLink.split("=");
+								String k_guid = str[1];
+								// Kivaの起業家ページをブラウザで開く
+								Uri uri = Uri.parse("http://www.kiva.org/lend/" + k_guid);
 								Intent intent = new Intent(Intent.ACTION_VIEW,uri);
 								startActivity(intent);
 							}
 						});
-				alert.setNegativeButton("いいえ",
+				alert.setNegativeButton(getString(R.string.no),
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
 								// Noボタンが押された時の処理
-								Toast.makeText(ItemDetailActivity.this, "残念です。またの機会をお待ちしております。",
+								Toast.makeText(ItemDetailActivity.this, getString(R.string.message_loan_cancel),
 										Toast.LENGTH_LONG).show();
 							}
 						});
