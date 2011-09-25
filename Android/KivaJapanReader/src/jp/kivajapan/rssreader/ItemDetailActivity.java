@@ -1,27 +1,48 @@
 package jp.kivajapan.rssreader;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 //import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ItemDetailActivity extends Activity {
 	private TextView mTitle;
 	private TextView mAuthor;
+	private TextView mSummary;
 //	private TextView mDescr;
 	private WebView  mContent;
+	private ImageView  mImage;
 	private String mLink;
 	private String title;
 	private String author;
+	private String image;
+	private String summary;
+	private String name;
+	private String country;
+	private String category;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +55,19 @@ public class ItemDetailActivity extends Activity {
 		title = intent.getStringExtra("TITLE");
 		mTitle = (TextView) findViewById(R.id.item_detail_title);
 		mTitle.setText(title);
-
+		
+		//タイトルを起業家名、国名、業種名に分割
+		String[] strings1 = title.split("[\\[/\\]]");
+		name = strings1[0];
+		Log.v("KivaJapanReader", name);
+//		String[] strings2 = title.split("/");
+		country = strings1[1];
+		Log.v("KivaJapanReader", country);
+//		String[] strings3 = title.split("\\]");
+		category = strings1[2];
+		Log.v("KivaJapanReader", category);
+		
+		
 		//翻訳者をセット
 		author = intent.getStringExtra("AUTHOR");
 		mAuthor = (TextView) findViewById(R.id.item_detail_author);
@@ -44,18 +77,39 @@ public class ItemDetailActivity extends Activity {
 //		String descr = intent.getStringExtra("DESCRIPTION");
 //		mDescr = (TextView) findViewById(R.id.item_detail_descr);
 //		mDescr.setText(descr);		
-		String descr = intent.getStringExtra("CONTENT");
-		mContent = (WebView) findViewById(R.id.WebView01);
+//		String descr = intent.getStringExtra("CONTENT");
+//		mContent = (WebView) findViewById(R.id.WebView01);
 		//CharSequence sHtml = Html.fromHtml(descr);
-		mContent.loadDataWithBaseURL(null, descr, "text/html", "utf-8", null);
+//		mContent.loadDataWithBaseURL(null, descr, "text/html", "utf-8", null);
 		// loadDataだと1.6では良いが、2.3.3で文字化け
 //		mContent.loadData(descr, "text/html", "utf-8");
 //		webViewLoadData(mContent, descr);
-
+		summary = intent.getStringExtra("SUMMARY");
+		mSummary = (TextView) findViewById(R.id.textView1);
+		mSummary.setText(summary);
+		
 		//URLをセット
 		mLink = intent.getStringExtra("LINK");
 		
+		//画像をセット
+		image = intent.getStringExtra("IMAGE");
+		String[] urls = image.split("/");
+		Log.v("KivaJapanReader", "url.length="+String.valueOf(urls.length));
+		Log.v("KivaJapanReader", "url[0]="+urls[0]);
+		Log.v("KivaJapanReader", "url[1]="+urls[1]);
+		Log.v("KivaJapanReader", "url[2]="+urls[2]);
+		Log.v("KivaJapanReader", "url[3]="+urls[3]);
+		Log.v("KivaJapanReader", "url[4]="+urls[4]);
+		Log.v("KivaJapanReader", "url[5]="+urls[5]);
+		image = "http://www.kiva.org/img/w400/" + urls[5];
+		Log.v("KivaJapanReader", image);
+		mImage = (ImageView) findViewById(R.id.imageView1);
+    	DownloadTask task = new DownloadTask(mImage);  
+		task.execute(image);
+		
+		
 	}
+	
 	
     public final static void webViewLoadData(WebView web, String html) {
         StringBuilder buf = new StringBuilder(html.length());
@@ -94,8 +148,16 @@ public class ItemDetailActivity extends Activity {
 		Intent intent;
 
 		switch (item.getItemId()) {
+		// 詳細情報(KivaJapanのサイトに接続)
+		case R.id.menu_detail:
 			// 融資（Webサイトに接続）
-			case R.id.menu_loan:
+			// Kivaの起業家ページをブラウザで開く
+			Uri uri = Uri.parse(mLink);
+			intent = new Intent(Intent.ACTION_VIEW,uri);
+			startActivity(intent);
+			break;
+
+		case R.id.menu_loan:
 				//Toast.makeText(this, mLink, Toast.LENGTH_LONG).show();
 
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -149,6 +211,39 @@ public class ItemDetailActivity extends Activity {
 				intent = new Intent(Intent.ACTION_SEARCH);
 //				intent.getStringExtra(SearchManager.QUERY);
 			    intent.putExtra("query", author);
+			    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			    try{  
+			      startActivityForResult(intent, 0);  
+			    }  
+			    catch (android.content.ActivityNotFoundException ex) {  
+			      Toast.makeText(this, "client not found", Toast.LENGTH_LONG).show();
+			    }
+				break;
+			case R.id.menu_search_name:
+				intent = new Intent(Intent.ACTION_SEARCH);
+			    intent.putExtra("query", name);
+			    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			    try{  
+			      startActivityForResult(intent, 0);  
+			    }  
+			    catch (android.content.ActivityNotFoundException ex) {  
+			      Toast.makeText(this, "client not found", Toast.LENGTH_LONG).show();
+			    }
+				break;
+			case R.id.menu_search_country:
+				intent = new Intent(Intent.ACTION_SEARCH);
+			    intent.putExtra("query", country);
+			    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			    try{  
+			      startActivityForResult(intent, 0);  
+			    }  
+			    catch (android.content.ActivityNotFoundException ex) {  
+			      Toast.makeText(this, "client not found", Toast.LENGTH_LONG).show();
+			    }
+				break;
+			case R.id.menu_search_category:
+				intent = new Intent(Intent.ACTION_SEARCH);
+			    intent.putExtra("query", category);
 			    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			    try{  
 			      startActivityForResult(intent, 0);  

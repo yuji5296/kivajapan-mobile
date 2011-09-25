@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:icon="@android:drawable/ic_menu_send" android:title="Mail to author"
+		android:id="@+id/menu_mail"></item>
+	<item android:title="Site" android:id="@+id/menu_goto_site"></item>
+	<item android:title="Kiva.org" android:id="@+id/menu_goto_kiva"></item>
+	<item android:title="KivaJapan" android:id="@+id/menu_goto_kivajapan"></item>
+	<item android:title="Facebook" android:id="@+id/menu_goto_facebook"></item>
+	<item android:title="Twitter" android:id="@+id/menu_goto_twitter"></item>
+</menu>

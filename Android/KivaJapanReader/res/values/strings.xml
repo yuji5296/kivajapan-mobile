@@ -2,8 +2,9 @@
 <resources>
     <string name="test">http://www.kiva.org/img/w80h80/674364.jpg</string>
     <string name="hello">Hello Kiva Japan!</string>
-    <string name="app_name">Kiva Japan Reader Widget</string>
-	<string name="author">Yuji DOI&lt;yuji5296@gmail.com&gt;</string>
+    <string name="app_name">Kiva Japan Reader</string>
+	<string name="author">Yuji DOI</string>
+	<string name="copyright">(c)2011, Yuji DOI</string>
 	<string name="mail">yuji5296@gmail.com</string>
     <string name="url_site">https://sites.google.com/site/kivajapanrssreader/</string>
     <string name="url_code">http://code.google.com/p/kivajapan-mobile/</string>
@@ -16,9 +17,14 @@
 	<string name="loan">融資</string>
 	<string name="share">共有</string>
 	<string name="search">検索</string>
+	<string name="search_name">名前を検索</string>
+	<string name="search_country">国名を検索</string>
+	<string name="search_category">業種を検索</string>
 	<string name="yes">はい</string>
 	<string name="no">いいえ</string>
 	<string name="message_loan_confirm">Kivaのサイトから、この起業家に融資しますか？</string>
 	<string name="message_loan_cancel">残念です。またの機会をお待ちしております。</string>
+	<string name="slogan">今僕らにできる社会貢献</string>
+	<string name="detail">詳細情報</string>
 
 </resources>
