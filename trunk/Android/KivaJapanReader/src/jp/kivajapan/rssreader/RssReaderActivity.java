@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,14 +34,14 @@ public class RssReaderActivity extends ListActivity {
 //        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
 
     	// アニメーションするイメージを取得
-    	ImageView animWindow = (ImageView)findViewById(R.id.ImageView01);
+//    	ImageView animWindow = (ImageView)findViewById(R.id.ImageView01);
 
     	// アニメーションリソースをロード
-    	Animation anim = AnimationUtils.loadAnimation(this, R.anim.progresscircle);
-    	anim.setRepeatMode(Animation.RESTART);
+//    	Animation anim = AnimationUtils.loadAnimation(this, R.anim.progresscircle);
+//    	anim.setRepeatMode(Animation.RESTART);
 
     	// アニメーション開始
-    	animWindow.startAnimation(anim);
+//    	animWindow.startAnimation(anim);
         
 		// Itemオブジェクトを保持するためのリストを生成し、アダプタに追加する
 		mItems = new ArrayList<Item>();
@@ -101,9 +102,13 @@ public class RssReaderActivity extends ListActivity {
 		intent.putExtra("TITLE", item.getTitle());
 //		intent.putExtra("DESCRIPTION", item.getDescription());
 		intent.putExtra("CONTENT", item.getContent());
+		intent.putExtra("SUMMARY", item.getSummary());
 		intent.putExtra("AUTHOR", item.getAuthor());
 		intent.putExtra("LINK", item.getLink());
+		intent.putExtra("IMAGE", item.getImage());
 		startActivity(intent);
+		Log.v("KivaJapanReader",(String)item.getTitle());
+		Log.v("KivaJapanReader",(String)item.getImage());
 	}
 	
 	// MENUボタンを押したときの処理

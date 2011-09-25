@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="jp.kivajapan.rssreader" android:versionName="1.4.3" android:versionCode="7">
+	package="jp.kivajapan.rssreader" android:versionName="1.5.0" android:versionCode="8">
+    
 	<application android:icon="@drawable/kiva_icon"
 		android:label="@string/app_name"
 		android:theme="@style/KivaJapanStyle" android:debuggable="true"
 		android:allowTaskReparenting="true">
-		<activity android:name=".SplashActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+		<activity android:name=".SplashActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:configChanges="orientation">
 		</activity>
 		<activity android:name=".RssReaderActivity" android:configChanges="orientation">
 		</activity>
-		<activity android:name=".ItemDetailActivity">
+		<activity android:name=".ItemDetailActivity" android:configChanges="orientation">
 		</activity>
 
-		<activity android:name=".AboutActivity" android:label="@string/app_name"></activity>
-		<activity android:name=".HelpActivity" android:label="@string/help"></activity>
+		<activity android:name=".AboutActivity" android:label="@string/app_name" android:configChanges="orientation"></activity>
+		<activity android:name=".HelpActivity" android:label="@string/help" android:configChanges="orientation"></activity>
 		<activity android:name="TopActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<receiver android:name=".KivaJapanWidgetProvider" 
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="jp.kivajapan.rssreader.ACTION_MY_CLICK" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" 
+                android:resource="@xml/widget" />
+	</receiver>
 	</application>
 	<uses-sdk android:minSdkVersion="3"
 		android:targetSdkVersion="4" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
 </manifest> 

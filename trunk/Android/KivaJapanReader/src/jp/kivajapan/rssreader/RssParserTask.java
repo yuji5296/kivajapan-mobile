@@ -12,6 +12,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 //import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Xml;
 
@@ -23,6 +24,12 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 	// コンストラクタ
 	public RssParserTask(RssReaderActivity activity, RssListAdapter adapter) {
 		mActivity = activity;
+		mAdapter = adapter;
+	}
+
+	public RssParserTask(Context context, RssListAdapter adapter) {
+		// TODO Auto-generated constructor stub
+		mActivity = (RssReaderActivity) context;
 		mAdapter = adapter;
 	}
 

@@ -28,11 +28,11 @@ public class DownloadTask extends AsyncTask<String, Void, Bitmap> {
         this.imageView.setImageResource(R.drawable.progresscircle_small);
 
     	// アニメーションリソースをロード
-        Animation anim = AnimationUtils.loadAnimation(this.imageView.getContext(), R.anim.progresscircle);
-    	anim.setRepeatMode(Animation.RESTART);
+//        Animation anim = AnimationUtils.loadAnimation(this.imageView.getContext(), R.anim.progresscircle);
+//    	anim.setRepeatMode(Animation.RESTART);
 
     	// アニメーション開始
-    	this.imageView.startAnimation(anim);
+//    	this.imageView.startAnimation(anim);
 
     }  
     @Override  
