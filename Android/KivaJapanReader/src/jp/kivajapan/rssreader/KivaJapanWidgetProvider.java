@@ -127,7 +127,10 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				  Log.v("KivaJapanReaderWidget", "url[5]="+urls[5]);
         				  imgSrc = "http://www.kiva.org/img/w160h120/" + urls[5];
         				  Log.v("KivaJapanReaderWidget", imgSrc);
-        				  views.setImageViewBitmap(R.id.imageView1, getBitmap(imgSrc));
+        				  Bitmap bmp = getBitmap(imgSrc);
+        				  if(bmp != null){
+        					  views.setImageViewBitmap(R.id.imageView1, bmp);
+        				  }
         			}
         			
         			//名前
@@ -169,7 +172,10 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 	        				  // http://kivajapan.jp/img/webpage/national_flags/VN.jpg
 	        				  imgSrc = kivaUrl + imgSrc;
 	        				  Log.v("KivaJapanReaderWidget", imgSrc);
-	        				  views.setImageViewBitmap(R.id.imageView2, getBitmap(imgSrc));
+	        				  Bitmap bmp = getBitmap(imgSrc);
+	        				  if(bmp != null){
+	        					  views.setImageViewBitmap(R.id.imageView2, bmp);
+	        				  }
 	        			}
         			}
         			
