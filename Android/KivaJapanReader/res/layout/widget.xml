@@ -4,19 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/backgroundcolor">
-	<TextView android:id="@+id/TextView04" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:background="@color/titlebackgroundcolor"
+	<TextView android:id="@+id/TextView04" android:layout_height="wrap_content" android:background="@color/titlebackgroundcolor"
 		android:textColor="@color/titletextcolor" android:gravity="center"
-		android:text="@string/slogan" android:textStyle="bold" />
+		android:text="@string/slogan" android:textStyle="bold" android:layout_width="match_parent"/>
 <LinearLayout android:id="@+id/linearLayout1" android:layout_height="match_parent" android:layout_width="match_parent">
     <ImageView android:layout_height="wrap_content" android:src="@drawable/banner" android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_gravity="center" android:maxHeight="120px" android:maxWidth="180px" android:minHeight="120px" android:minWidth="120px" android:scaleType="centerInside"></ImageView>
-    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical" android:layout_gravity="center">
-        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:text="Kiva Japan Reader" android:id="@+id/textView_large" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:lines="1"></TextView>
-        <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_width="match_parent">
+    <LinearLayout android:id="@+id/linearLayout2" android:orientation="vertical" android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:id="@+id/textView_large" android:textColor="@color/textcolor" android:lines="1" android:layout_gravity="center" android:gravity="center" android:layout_width="match_parent" android:text="Kiva Japan Reader"></TextView>
+        <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:layout_gravity="center" android:gravity="center" android:layout_width="match_parent">
             <ImageView android:id="@+id/imageView2" android:layout_gravity="center" android:layout_height="20sp" android:layout_width="30sp" android:scaleType="centerInside"></ImageView>
             <TextView android:textColor="@color/textcolor" android:text="Version.1.5.0" android:layout_width="wrap_content" android:id="@+id/textView_medium" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:lines="1"></TextView>
         </LinearLayout>
-        <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:text="Provided by Yuji DOI" android:id="@+id/textView_small" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:lines="1" android:layout_gravity="center"></TextView>
+        <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:text="Provided by Yuji DOI" android:id="@+id/textView_small" android:textColor="@color/textcolor" android:lines="1" android:layout_gravity="center" android:layout_width="match_parent" android:gravity="center"></TextView>
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>

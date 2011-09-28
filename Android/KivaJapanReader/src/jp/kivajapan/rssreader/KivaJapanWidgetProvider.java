@@ -98,7 +98,9 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
             		String imgSrc;
             		String kivaUrl = "http://kivajapan.jp/";
             		String name;
-            		String country;
+            		String country = "国";
+            		String category = "業種";
+            		String translator = "翻訳家";
         			URL url = new URL(kivaUrl);
         			Document doc = Jsoup.parse(url,0);
         			//http://jsoup.org/cookbook/input/load-document-from-url
@@ -147,18 +149,6 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				}
         			}
         			
-        			//国
-        			//<span class="main-pickup-country">フィリピン</span> 			
-        			Elements elements2 = doc.getElementsByClass("main-pickup-country");
-        			for (Element element : elements2) {
-        				Elements spans = element.getElementsByTag("span");
-        				for (Element span : spans) {
-        					country = span.text();
-        					Log.v("KivaJapanReaderWidget", country);
-        	                views.setTextViewText(R.id.textView_medium, country);
-        				}
-        			}
-        			
         			//国旗
         			//<div class="main-pickup-flag">
         			//<img src="/img/webpage/national_flags/VN.jpg" height="26" alt="" />
@@ -178,8 +168,52 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 	        				  }
 	        			}
         			}
-        			
 
+        			//国取得
+        			//<span class="main-pickup-country">フィリピン</span> 			
+        			Elements elements2 = doc.getElementsByClass("main-pickup-country");
+        			for (Element element : elements2) {
+        				Elements spans = element.getElementsByTag("span");
+        				for (Element span : spans) {
+        					country = span.text();
+        					Log.v("KivaJapanReaderWidget", country);
+        				}
+        			}
+        			
+        			//業種取得
+        			//  <dl class="main-pickup-status-data">
+        			//  <dt>業種：</dt>
+        			//  <dd>一般商店</dd>
+        			Elements elements4 = doc.getElementsByClass("main-pickup-status-data");
+        			for (Element element : elements4) {
+        				Elements dds = element.getElementsByTag("dd");
+        				for (Element dd : dds) {
+        					category = dd.text();
+        					Log.v("KivaJapanReaderWidget", category);
+        					break;
+        				}
+        			}
+        			
+        			// 国/業種を表示
+	                views.setTextViewText(R.id.textView_medium, country + "/" + category);
+
+	                //　翻訳者取得
+//	                <!-- 翻訳家詳細 -->
+//	                <div class="main-pickup-translator">
+//	                <a href="../translators/?page=Profile&tr_id=497"><img src="../translators/prof_img/0.jpg" height="20" /></a>
+//	                翻訳者 ： <a href="../translators/?page=Profile&tr_id=497">Yukie</a>
+//	                </div>
+        			Elements elements5 = doc.getElementsByClass("main-pickup-translator");
+        			for (Element element : elements5) {
+        				Elements anchors = element.getElementsByTag("a");
+        				for (Element anchor : anchors) {
+        					translator = anchor.text();
+        					Log.v("KivaJapanReaderWidget", translator);
+        	                views.setTextViewText(R.id.textView_small, "翻訳者：" + translator);
+        				}
+        			}
+
+        			
         		} catch (Exception e) {
         			e.printStackTrace();
         		}
