@@ -6,21 +6,26 @@
 	<ScrollView android:id="@+id/ScrollView01"
 		android:layout_height="match_parent" android:layout_width="match_parent">
 		<LinearLayout android:layout_height="match_parent"
-				android:id="@+id/linearLayout1" android:orientation="vertical"
-				android:layout_width="match_parent">
+			android:id="@+id/linearLayout1" android:orientation="vertical"
+			android:layout_width="match_parent">
 			<TextView android:id="@+id/item_detail_title"
-				android:background="@xml/list_row_background" android:textColor="@xml/text"
 				android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_width="match_parent" />
-			<TextView android:id="@+id/item_detail_author"
-				android:background="@xml/list_row_background" android:textColor="@xml/text"
-				android:layout_width="match_parent" android:layout_height="wrap_content" />
+				android:layout_width="match_parent" android:text="名前"
+				android:textColor="@color/textcolor" android:background="@color/backgroundcolor" />
+			<TextView android:id="@+id/item_detail_author" android:text="翻訳者"
+				android:layout_width="match_parent" android:layout_height="wrap_content"
+				android:background="@color/backgroundcolor" android:textColor="@color/textcolor" />
 			<ImageView android:id="@+id/imageView1"
 				android:layout_height="wrap_content" android:layout_width="match_parent"
 				android:layout_gravity="center" android:scaleType="centerInside"></ImageView>
-			<TextView android:text="TextView" android:id="@+id/textView1"
+			<TextView android:id="@+id/textView1" android:text="本文"
 				android:layout_height="wrap_content" android:layout_width="match_parent"
-				android:background="@xml/list_row_background" android:textColor="@xml/text"></TextView>
+				android:background="@color/backgroundcolor" android:textColor="@color/textcolor"></TextView>
+			<TextView android:id="@+id/textView2" android:text="以下サンプル"
+				android:layout_height="wrap_content" android:layout_width="match_parent"
+				android:background="@color/backgroundcolor" android:textColor="@color/textcolor"></TextView>
+			<WebView android:id="@+id/WebView01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content"></WebView>
 		</LinearLayout>
 	</ScrollView>
 	<!--

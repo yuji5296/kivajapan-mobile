@@ -2,6 +2,7 @@ package jp.kivajapan.rssreader;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -78,12 +79,14 @@ public class ItemDetailActivity extends Activity {
 //		mDescr = (TextView) findViewById(R.id.item_detail_descr);
 //		mDescr.setText(descr);		
 //		String descr = intent.getStringExtra("CONTENT");
-//		mContent = (WebView) findViewById(R.id.WebView01);
+		mContent = (WebView) findViewById(R.id.WebView01);
 		//CharSequence sHtml = Html.fromHtml(descr);
 //		mContent.loadDataWithBaseURL(null, descr, "text/html", "utf-8", null);
 		// loadDataだと1.6では良いが、2.3.3で文字化け
 //		mContent.loadData(descr, "text/html", "utf-8");
 //		webViewLoadData(mContent, descr);
+		Uri url = Uri.parse("http://ja.m.wikipedia.org/wiki/" + country);
+		mContent.loadUrl(url.toString());
 		summary = intent.getStringExtra("SUMMARY");
 		mSummary = (TextView) findViewById(R.id.textView1);
 		mSummary.setText(summary);
