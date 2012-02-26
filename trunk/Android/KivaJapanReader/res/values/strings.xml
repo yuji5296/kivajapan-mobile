@@ -13,10 +13,13 @@
 	<string name="help">ヘルプ</string>
 	<string name="info">情報</string>
 	<string name="update">更新</string>
+	<string name="preference">設定</string>
 	<string name="loding">起業家情報取得中</string>
 	<string name="loan">融資</string>
 	<string name="share">共有</string>
 	<string name="search">検索</string>
+	<string name="shortcut">ショートカット</string>
+	<string name="bookmark">お気に入り</string>
 	<string name="search_name">名前を検索</string>
 	<string name="search_country">国名を検索</string>
 	<string name="search_category">業種を検索</string>
@@ -26,5 +29,7 @@
 	<string name="message_loan_cancel">残念です。またの機会をお待ちしております。</string>
 	<string name="slogan">今僕らにできる社会貢献</string>
 	<string name="detail">詳細情報</string>
-
+	<string name="list">起業家一覧</string>
+	<string name="pickup">ピックアップ起業家</string>
+	    	    
 </resources>

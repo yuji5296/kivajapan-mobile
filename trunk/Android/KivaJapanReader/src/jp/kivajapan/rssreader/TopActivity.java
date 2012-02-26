@@ -99,6 +99,11 @@ public class TopActivity extends Activity {
 		case R.id.menu_update:
 			getPickupWithJsoup();
 			break;
+		// 設定
+		case R.id.menu_preference:
+			intent = new Intent(this, KivaJapanPreferenceActivity.class);
+			startActivity(intent);
+			break;
 		// 情報
 		case R.id.menu_info:
 			intent = new Intent(this, AboutActivity.class);

@@ -1,38 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-	<!-- item_detail.xml -->
-<LinearLayout android:layout_width="fill_parent"
-	android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
-	android:background="@color/backgroundcolor" android:layout_height="fill_parent">
-	<ScrollView android:id="@+id/ScrollView01"
-		android:layout_height="match_parent" android:layout_width="match_parent">
-		<LinearLayout android:layout_height="match_parent"
-			android:id="@+id/linearLayout1" android:orientation="vertical"
-			android:layout_width="match_parent">
-			<TextView android:id="@+id/item_detail_title"
-				android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_width="match_parent" android:text="名前"
-				android:textColor="@color/textcolor" android:background="@color/backgroundcolor" />
-			<TextView android:id="@+id/item_detail_author" android:text="翻訳者"
-				android:layout_width="match_parent" android:layout_height="wrap_content"
-				android:background="@color/backgroundcolor" android:textColor="@color/textcolor" />
-			<ImageView android:id="@+id/imageView1"
-				android:layout_height="wrap_content" android:layout_width="match_parent"
-				android:layout_gravity="center" android:scaleType="centerInside"></ImageView>
-			<TextView android:id="@+id/textView1" android:text="本文"
-				android:layout_height="wrap_content" android:layout_width="match_parent"
-				android:background="@color/backgroundcolor" android:textColor="@color/textcolor"></TextView>
-			<TextView android:id="@+id/textView2" android:text="以下サンプル"
-				android:layout_height="wrap_content" android:layout_width="match_parent"
-				android:background="@color/backgroundcolor" android:textColor="@color/textcolor"></TextView>
-			<WebView android:id="@+id/WebView01" android:layout_width="wrap_content"
-				android:layout_height="wrap_content"></WebView>
-		</LinearLayout>
-	</ScrollView>
-	<!--
+<!-- item_detail.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/item_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="名前"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/item_detail_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="翻訳者" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="centerInside" >
+            </ImageView>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="本文" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="以下サンプル" >
+            </TextView>
+
+            <WebView
+                android:id="@+id/WebView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </WebView>
+        </LinearLayout>
+    </ScrollView>
+    <!--
 		<WebView android:id="@+id/WebView01"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:background="@color/backgroundcolor"
 		android:layout_weight="1"/>
-	-->
+    -->
+
 </LinearLayout>

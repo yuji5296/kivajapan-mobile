@@ -18,9 +18,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+//import android.webkit.WebView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+//import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RssListAdapter extends ArrayAdapter<Item> {
@@ -28,7 +28,7 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 	private TextView mTitle;
 	private TextView mDescr;
 //	private ImageView mImage;
-	private WebView mWebview;
+//	private WebView mWebview;
 
 	public RssListAdapter(Context context, List<Item> objects) {
 		super(context, 0, objects);

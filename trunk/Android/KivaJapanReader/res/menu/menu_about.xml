@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:icon="@android:drawable/ic_menu_send" android:title="Mail to author"
-		android:id="@+id/menu_mail"></item>
-	<item android:title="Site" android:id="@+id/menu_goto_site"></item>
-	<item android:title="Kiva.org" android:id="@+id/menu_goto_kiva"></item>
-	<item android:title="KivaJapan" android:id="@+id/menu_goto_kivajapan"></item>
-	<item android:title="Facebook" android:id="@+id/menu_goto_facebook"></item>
-	<item android:title="Twitter" android:id="@+id/menu_goto_twitter"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_mail"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="Mail to author"></item>
+
+    <item
+        android:id="@+id/menu_goto_site"
+        android:title="Web Site"></item>
+
+    <item
+        android:id="@+id/menu_goto_kiva"
+        android:title="Kiva.org"></item>
+
+    <item
+        android:id="@+id/menu_goto_kivajapan"
+        android:title="KivaJapan"></item>
+
+    <item
+        android:id="@+id/menu_goto_kivadroid"
+        android:title="KivaDroid"></item>
+
+    <item
+        android:id="@+id/menu_goto_facebook"
+        android:title="Facebook"></item>
+
+    <item
+        android:id="@+id/menu_goto_twitter"
+        android:title="Twitter"></item>
+
 </menu>
