@@ -12,8 +12,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+//import android.view.animation.Animation;
+//import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 //URIで指定した画像を読み込みImageViewに表示する。

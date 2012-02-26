@@ -1,39 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="jp.kivajapan.rssreader" android:versionName="1.5.3" android:versionCode="11">
-    
-	<application android:icon="@drawable/kiva_icon"
-		android:label="@string/app_name"
-		android:theme="@style/KivaJapanStyle" android:debuggable="true"
-		android:allowTaskReparenting="true">
-		<activity android:name=".SplashActivity" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" android:configChanges="orientation">
-		</activity>
-		<activity android:name=".RssReaderActivity" android:configChanges="orientation">
-		</activity>
-		<activity android:name=".ItemDetailActivity" android:configChanges="orientation">
-		</activity>
+    package="jp.kivajapan.rssreader"
+    android:versionCode="12"
+    android:versionName="1.5.4" >
 
-		<activity android:name=".AboutActivity" android:label="@string/app_name" android:configChanges="orientation"></activity>
-		<activity android:name=".HelpActivity" android:label="@string/help" android:configChanges="orientation"></activity>
-		<activity android:name="TopActivity">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		<receiver android:name=".KivaJapanWidgetProvider" 
-            android:label="@string/app_name">
-            <intent-filter>
+    <application
+        android:allowTaskReparenting="true"
+        android:debuggable="true"
+        android:icon="@drawable/kiva_icon"
+        android:label="@string/app_name"
+        android:theme="@style/KivaJapanStyle" 
+        >
+        <activity
+            android:configChanges="orientation"
+            android:name=".SplashActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:configChanges="orientation"
+            android:name=".RssReaderActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:configChanges="orientation"
+            android:name=".ItemDetailActivity" >
+        </activity>
+        <activity
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:name=".AboutActivity" >
+        </activity>
+        <activity
+            android:configChanges="orientation"
+            android:label="@string/help"
+            android:name=".HelpActivity" >
+        </activity>
+        <activity
+            android:configChanges="orientation"
+            android:label="@string/preference"
+            android:name=".KivaJapanPreferenceActivity" >
+        </activity>
+        <activity android:name=".TopActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:label="@string/app_name"
+            android:name=".KivaJapanWidgetProvider" >
+            <intent-filter >
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="jp.kivajapan.rssreader.ACTION_MY_CLICK" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" 
-                android:resource="@xml/widget" />
-	</receiver>
-	</application>
-	<uses-sdk android:minSdkVersion="3"
-		android:targetSdkVersion="4" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
-</manifest> 
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget" />
+        </receiver>
+
+        <activity android:name=".LauncherShortcuts"
+                  android:label="@string/hello">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- It is recommended that you use an activity-alias to provide the "CREATE_SHORTCUT" -->
+        <!-- intent-filter.  This gives you a way to set the text (and optionally the -->
+        <!-- icon) that will be seen in the launcher's create-shortcut user interface. -->
+
+        <activity-alias android:name=".CreateShortcuts"
+            android:targetActivity=".LauncherShortcuts"
+            android:label="@string/hello">
+
+            <!--  This intent-filter allows your shortcuts to be created in the launcher. -->
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity-alias>
+    </application>
+
+    <uses-sdk
+        android:minSdkVersion="3"
+        android:targetSdkVersion="4" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+
+</manifest>

@@ -1,30 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent"
-	android:orientation="vertical" 
-	android:background="@color/backgroundcolor">
-	<TextView android:gravity="center" android:text="今僕らにできる社会貢献"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:background="@color/titlebackgroundcolor" 
-		android:textColor="@color/titletextcolor"
-		android:textStyle="bold" android:textSize="20sp" />
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-	<LinearLayout android:id="@+id/LinearLayout02"
-		android:orientation="vertical" android:layout_height="fill_parent"
-		android:layout_width="fill_parent" android:gravity="center"
-		android:background="@color/backgroundcolor">
-		<ImageView android:textColor="#006400" android:layout_width="fill_parent"
-			android:scaleType="centerInside" android:src="@drawable/kiva_japan"
-			android:layout_height="wrap_content" android:background="@color/backgroundcolor" />
-		<ImageButton android:id="@+id/imageButton3" android:layout_height="wrap_content" android:src="@drawable/for_beginner" android:onClick="onClickButton2" android:layout_width="wrap_content" android:scaleType="fitCenter"></ImageButton>
-		<ImageButton android:onClick="onClickButton1" android:layout_height="wrap_content" android:id="@+id/imageButton1" android:src="@drawable/search_entrepreneurs" android:layout_width="wrap_content" android:scaleType="fitCenter"></ImageButton>
-		<ImageButton android:onClick="onClickButton3" android:layout_height="wrap_content" android:id="@+id/imageButton2" android:src="@drawable/about_translator2" android:scaleType="fitCenter" android:layout_width="wrap_content"></ImageButton>
-		<ImageView android:id="@+id/imageView1" android:src="@drawable/progresscircle_small" android:layout_height="fill_parent" android:onClick="onClick_Pickup" android:clickable="true" android:layout_width="fill_parent" android:scaleType="centerInside"></ImageView>
-	<!-- 
-	<WebView android:layout_width="match_parent" android:id="@+id/webView1" android:layout_height="match_parent"></WebView>
-	-->
-		
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/slogan"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        style="@style/KivaJapanHighlight"
+        />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@drawable/kiva_japan"
+             />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickButton2"
+            android:scaleType="fitCenter"
+            android:src="@drawable/for_beginner" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickButton1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search_entrepreneurs" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickButton3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/about_translator2" >
+        </ImageButton>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:onClick="onClick_Pickup"
+            android:scaleType="centerInside"
+            android:src="@drawable/progresscircle_small" >
+        </ImageView>
+        <!-- <WebView android:layout_width="match_parent" android:id="@+id/webView1" android:layout_height="match_parent"></WebView> -->
+
+    </LinearLayout>
+
 </LinearLayout>
-</LinearLayout>
-	

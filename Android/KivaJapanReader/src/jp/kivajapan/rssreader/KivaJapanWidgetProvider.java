@@ -3,7 +3,7 @@ package jp.kivajapan.rssreader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.http.HttpEntity;
@@ -24,12 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
+//import android.net.Uri;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+//import android.view.View;
+//import android.widget.ImageView;
 import android.widget.RemoteViews;
-import android.widget.Toast;
+//import android.widget.Toast;
 
 
 public class KivaJapanWidgetProvider extends AppWidgetProvider {

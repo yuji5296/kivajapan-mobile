@@ -1,7 +1,9 @@
 package jp.kivajapan.rssreader;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+//import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -55,7 +57,7 @@ public class AboutActivity extends Activity {
 //				uri=Uri.parse("mailto:yuji5296@gmail.com");
 				intent=new Intent(Intent.ACTION_SENDTO,uri);
 //				intent.setType("text/plain");
-				intent.putExtra(Intent.EXTRA_SUBJECT, "Kiva Japan Reader");
+				intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback about Kiva Japan Reader");
 				intent.putExtra(Intent.EXTRA_TEXT,"Input your comment, request, etc...");
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				try {
@@ -81,6 +83,27 @@ public class AboutActivity extends Activity {
 				uri = Uri.parse(getString(R.string.url_kivajapan));
 				intent = new Intent(Intent.ACTION_VIEW,uri);
 				startActivity(intent);
+				break;
+			case R.id.menu_goto_kivadroid:
+				PackageManager pm = getPackageManager();
+				try {
+					pm.getApplicationInfo("com.chimpler.kivadroid", 0);
+					//アプリが存在しない場合、例外発生。
+					intent = new Intent(Intent.ACTION_MAIN);
+					intent.setClassName("com.chimpler.kivadroid", "com.chimpler.kivadroid.HomeActivity");
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivity(intent);
+				} catch (ActivityNotFoundException e) {
+					uri=Uri.parse("market://search?q=com.chimpler.kivadroid");
+					intent=new Intent(Intent.ACTION_VIEW,uri);
+					startActivity(intent); 
+				} catch (NameNotFoundException e) {
+					// TODO Auto-generated catch block
+					uri=Uri.parse("market://search?q=com.chimpler.kivadroid");
+					intent=new Intent(Intent.ACTION_VIEW,uri);
+					startActivity(intent); 
+					e.printStackTrace();
+				}
 				break;
 			case R.id.menu_goto_facebook:
 				uri = Uri.parse("http://www.facebook.com/pages/KivaJapan-Reader/274413395920688");

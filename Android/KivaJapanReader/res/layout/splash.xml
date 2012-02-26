@@ -1,20 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent"
-	android:orientation="vertical" 
-	android:background="@color/backgroundcolor">
-	<TextView android:gravity="center" android:text="今僕らにできる社会貢献"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:background="@color/titlebackgroundcolor" 
-		android:textColor="@color/titletextcolor"
-		android:textStyle="bold" android:textSize="20sp" />
-     
-	<LinearLayout android:id="@+id/LinearLayout02" android:orientation="vertical" android:layout_height="fill_parent" android:layout_width="fill_parent" android:gravity="center" android:background="@color/backgroundcolor"><ImageView android:textColor="#006400" android:layout_width="fill_parent" android:scaleType="centerInside" android:src="@drawable/kiva_japan" android:layout_height="wrap_content" android:background="@color/backgroundcolor" /><LinearLayout android:id="@+id/LinearLayout01" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent" android:gravity="center" android:background="@color/backgroundcolor">
-	<ProgressBar android:id="@+id/ProgressBar01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fadeScrollbars="false">
-	</ProgressBar>
-<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Now loding..." android:textColor="@color/textcolor"></TextView>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/slogan"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+        
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@drawable/kiva_japan"
+		/>
+        <LinearLayout
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ProgressBar
+                android:id="@+id/ProgressBar01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fadeScrollbars="false" >
+            </ProgressBar>
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Now loding..." >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
-</LinearLayout>
-</LinearLayout>
-	

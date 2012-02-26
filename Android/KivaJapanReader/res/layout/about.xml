@@ -1,40 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent" android:layout_height="match_parent"
-	android:orientation="vertical" android:background="@color/backgroundcolor">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-	<TextView android:layout_height="wrap_content" android:textSize="20sp" android:background="@color/titlebackgroundcolor" android:layout_width="match_parent" android:textColor="@color/titletextcolor" android:textStyle="bold" android:gravity="center" android:id="@+id/TextView04" android:text="@string/slogan"></TextView>
-	<ScrollView android:id="@+id/ScrollView01"
-		android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
-		<LinearLayout android:orientation="vertical"
-			android:layout_height="match_parent" android:layout_width="match_parent"
-			>
-			<ImageView android:id="@+id/ImageView01" android:background="@color/backgroundcolor" android:src="@drawable/advertisement" android:layout_width="match_parent" android:layout_height="wrap_content" android:scaleType="centerInside"/>
-			<TextView android:background="@color/backgroundcolor" android:layout_width="match_parent" android:textColor="@color/textcolor" android:gravity="center" android:layout_height="match_parent" android:layout_weight="1"></TextView>
-			<LinearLayout android:orientation="horizontal"
-				android:layout_height="wrap_content" android:layout_width="wrap_content"
-				android:layout_gravity="center">
-				<ImageView android:src="@drawable/kiva_icon"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"
-					android:background="@color/backgroundcolor" />
-				<LinearLayout android:orientation="vertical"
-					android:layout_height="wrap_content" android:layout_width="wrap_content"
-					android:layout_gravity="center">
-					<TextView android:id="@+id/AppName" android:text="@string/app_name"
-						android:gravity="center" android:layout_width="match_parent"
-						android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
-						android:textColor="@color/textcolor" android:background="@color/backgroundcolor" />
-					<TextView android:id="@+id/Version" android:text="Version"
-						android:gravity="center" android:layout_width="match_parent"
-						android:textAppearance="?android:attr/textAppearanceMedium"
-						android:layout_height="wrap_content" 
-						android:textColor="@color/textcolor" android:background="@color/backgroundcolor" />
-					<TextView android:layout_height="wrap_content" android:background="@color/backgroundcolor" android:layout_width="match_parent" android:textColor="@color/textcolor" android:gravity="center" android:text="@string/author"></TextView>
-					</LinearLayout>
-			</LinearLayout>
-			<TextView android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text=""></TextView>
-			<!--
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/KivaJapanHighlight"
+        android:text="@string/slogan"
+        android:textSize="20sp"
+        android:textStyle="bold" >
+    </TextView>
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/advertisement" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/kiva_icon" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/AppName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/app_name"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                    <TextView
+                        android:id="@+id/Version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Version"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/author" >
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" >
+            </TextView>
+            <!--
 				<TextView android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:textColor="@color/textcolor" android:gravity="center"
@@ -52,19 +104,59 @@
 				android:id="@+id/link03" /> <TextView android:id="@+id/TextView02"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"></TextView>
-			-->
-			<TextView android:layout_height="match_parent" android:background="@color/backgroundcolor" android:layout_width="match_parent" android:textColor="@color/textcolor" android:gravity="center" android:text="Visit our web site on Google site"></TextView>
-			<TextView android:layout_height="match_parent" android:background="@color/backgroundcolor" android:layout_width="match_parent" android:textColor="@color/textcolor" android:gravity="center" android:text="Feedback to KivaJapanReader on Facebook"></TextView>
-			<TextView android:layout_height="match_parent" android:background="@color/backgroundcolor" android:layout_width="match_parent" android:textColor="@color/textcolor" android:gravity="center" android:text="Follow @kivajapanreader on Twitter"></TextView>
-			<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:orientation="horizontal" android:layout_gravity="center">
-			<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/banner" android:background="@color/backgroundcolor"></ImageView>
-			</LinearLayout>
-			<TextView android:background="@color/backgroundcolor"
-				android:gravity="center" android:textColor="@color/textcolor"
-				android:layout_width="match_parent" android:layout_height="match_parent" android:text="Designed by Keita Aoshima"></TextView>
-		</LinearLayout>
-	</ScrollView>
-			<TextView android:layout_height="wrap_content" android:background="@color/titlebackgroundcolor" android:layout_width="match_parent" android:textColor="@color/titletextcolor" android:gravity="center" android:id="@+id/Copyright" android:text="Copyright(C) 2011, Yuji DOI."></TextView>
+            -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Visit our web site on Google site" >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Feedback to KivaJapanReader on Facebook" >
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Follow @kivajapanreader on Twitter" >
+            </TextView>
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/banner" >
+                </ImageView>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Designed by Keita Aoshima" >
+            </TextView>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/Copyright"
+        style="@style/KivaJapanHighlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Copyright(C) 2011, Yuji DOI." >
+    </TextView>
 
 </LinearLayout>
-

@@ -1,25 +1,11 @@
 package jp.kivajapan.rssreader;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-//import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -162,8 +148,10 @@ public class ItemDetailActivity extends Activity {
 
 		case R.id.menu_loan:
 				//Toast.makeText(this, mLink, Toast.LENGTH_LONG).show();
-
+//AlertDialogの文字色が白になってしまう
 				AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//				AlertDialog.Builder alert = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.KivaJapanStyle));
+//				KivaJapanAlertDialog alert = new KivaJapanAlertDialog(this,R.style.KivaJapanAlertDialog);
 				alert.setTitle(getString(R.string.loan));
 				alert.setMessage(getString(R.string.message_loan_confirm));
 				alert.setPositiveButton(getString(R.string.yes),

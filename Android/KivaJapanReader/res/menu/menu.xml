@@ -7,4 +7,5 @@
 <item android:title="@string/help" android:titleCondensed="@string/help" android:icon="@android:drawable/ic_menu_help" android:id="@+id/menu_help"></item>
 <item android:title="@string/share" android:titleCondensed="@string/share" android:icon="@android:drawable/ic_menu_share" android:id="@+id/menu_share"></item>
 <item android:id="@+id/menu_search" android:titleCondensed="@string/search" android:title="@string/search" android:icon="@android:drawable/ic_menu_search"></item>
+<item android:id="@+id/menu_preference" android:titleCondensed="@string/preference" android:title="@string/preference" android:icon="@android:drawable/ic_menu_preferences"></item>
 </menu>
