@@ -44,13 +44,6 @@
                 android:text="本文" >
             </TextView>
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="以下サンプル" >
-            </TextView>
-
             <WebView
                 android:id="@+id/WebView01"
                 android:layout_width="wrap_content"

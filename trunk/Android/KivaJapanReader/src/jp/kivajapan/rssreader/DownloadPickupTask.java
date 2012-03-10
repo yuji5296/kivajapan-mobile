@@ -21,14 +21,17 @@ import android.os.AsyncTask;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 //URIで指定した画像を読み込みImageViewに表示する。
-public class DownloadPickupTask extends AsyncTask<String, Void, Bitmap> {  
+public class DownloadPickupTask extends AsyncTask<String, Void, Bitmap> {
+	private TopActivity activity; 
     // アイコンを表示するビュー  
     private ImageView imageView;  
   
     // コンストラクタ  
-    public DownloadPickupTask(ImageView imageView) {
+    public DownloadPickupTask(TopActivity activity, ImageView imageView) {
+    	this.activity = activity;
         this.imageView = imageView;
     	// プログレス画像を表示（更新時に表示する為にここで設定）
         this.imageView.setImageResource(R.drawable.progresscircle_small);
@@ -69,7 +72,8 @@ public class DownloadPickupTask extends AsyncTask<String, Void, Bitmap> {
 				  imgSrc = img.attr("src");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+        	return null;
+//			e.printStackTrace();
 		}
 
     	this.imageView.setTag(linkHref);
@@ -107,7 +111,11 @@ public class DownloadPickupTask extends AsyncTask<String, Void, Bitmap> {
   
     // メインスレッドで実行する処理  
     @Override  
-    protected void onPostExecute(Bitmap result) {  
+    protected void onPostExecute(Bitmap result) {
+    	if (result == null){
+        	Toast.makeText(activity, "No network", Toast.LENGTH_SHORT).show();
+    		return;
+    	}
     	this.imageView.clearAnimation();
     	this.imageView.setImageBitmap(result);
 		this.imageView.invalidate();

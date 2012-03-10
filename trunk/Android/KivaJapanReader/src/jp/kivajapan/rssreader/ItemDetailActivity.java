@@ -46,13 +46,13 @@ public class ItemDetailActivity extends Activity {
 		//タイトルを起業家名、国名、業種名に分割
 		String[] strings1 = title.split("[\\[/\\]]");
 		name = strings1[0];
-		Log.v("KivaJapanReader", name);
+//		Log.v("KivaJapanReader", name);
 //		String[] strings2 = title.split("/");
 		country = strings1[1];
-		Log.v("KivaJapanReader", country);
+//		Log.v("KivaJapanReader", country);
 //		String[] strings3 = title.split("\\]");
 		category = strings1[2];
-		Log.v("KivaJapanReader", category);
+//		Log.v("KivaJapanReader", category);
 		
 		
 		//翻訳者をセット
@@ -83,17 +83,17 @@ public class ItemDetailActivity extends Activity {
 		//画像をセット
 		image = intent.getStringExtra("IMAGE");
 		String[] urls = image.split("/");
-		Log.v("KivaJapanReader", "url.length="+String.valueOf(urls.length));
-		Log.v("KivaJapanReader", "url[0]="+urls[0]);
-		Log.v("KivaJapanReader", "url[1]="+urls[1]);
-		Log.v("KivaJapanReader", "url[2]="+urls[2]);
-		Log.v("KivaJapanReader", "url[3]="+urls[3]);
-		Log.v("KivaJapanReader", "url[4]="+urls[4]);
-		Log.v("KivaJapanReader", "url[5]="+urls[5]);
+//		Log.v("KivaJapanReader", "url.length="+String.valueOf(urls.length));
+//		Log.v("KivaJapanReader", "url[0]="+urls[0]);
+//		Log.v("KivaJapanReader", "url[1]="+urls[1]);
+//		Log.v("KivaJapanReader", "url[2]="+urls[2]);
+//		Log.v("KivaJapanReader", "url[3]="+urls[3]);
+//		Log.v("KivaJapanReader", "url[4]="+urls[4]);
+//		Log.v("KivaJapanReader", "url[5]="+urls[5]);
 		image = "http://www.kiva.org/img/w400/" + urls[5];
-		Log.v("KivaJapanReader", image);
+//		Log.v("KivaJapanReader", image);
 		mImage = (ImageView) findViewById(R.id.imageView1);
-    	DownloadTask task = new DownloadTask(mImage);  
+    	DownloadTask task = new DownloadTask(this,mImage);  
 		task.execute(image);
 		
 		

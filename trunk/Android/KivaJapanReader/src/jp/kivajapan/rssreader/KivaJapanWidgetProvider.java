@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.net.URL;
 //import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -25,7 +27,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 //import android.net.Uri;
-import android.util.Log;
+import android.preference.PreferenceManager;
 //import android.view.View;
 //import android.widget.ImageView;
 import android.widget.RemoteViews;
@@ -39,7 +41,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 
 	@Override
 	public void onEnabled(Context context) {
-		Log.v("KivaJapanReaderWidget", "onEnabled");
+//		Log.v("KivaJapanReaderWidget", "onEnabled");
 		super.onEnabled(context);
 		
 		//クリック時に実行するIntentの設定
@@ -56,15 +58,27 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 //		// タスクを起動する
 //		RssParserTask task = new RssParserTask(context, mAdapter);
 //		task.execute(RSS_FEED_URL);
-}
+	}
 	
 	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-			int[] appWidgetIds) {
-		Log.v("KivaJapanReaderWidget", "onUpdate");
+	public void onUpdate(final Context context, final AppWidgetManager appWidgetManager,
+			final int[] appWidgetIds) {
+//		Log.v("KivaJapanReaderWidget", "onUpdate");
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
+
+		int widgetRefreshInterval = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context).getString("widgetRefreshInterval", "60"));
 		
-                   
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {		
+			@Override
+			public void run() {
+				refreshWidgetView(context, appWidgetManager, appWidgetIds);
+			}
+		}, 1, widgetRefreshInterval * 60L * 1000L);
+	}
+	private void refreshWidgetView(Context context,AppWidgetManager appWidgetManager,
+			int[] appWidgetIds) {
+                  
         final int N = appWidgetIds.length;
 
         // このプロバイダーに所属するAppWidgetのそれぞれについて処理を行う
@@ -87,7 +101,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 
                 // 更新時の時刻を取得して表示
                 Date update = new Date();
-        		Log.v("KivaJapanReaderWidget", update.toLocaleString());
+//        		Log.v("KivaJapanReaderWidget", update.toLocaleString());
                 views.setTextViewText(R.id.textView_small, update.toLocaleString());
 
                 // KivaJapanのピックアップ起業家情報を取得
@@ -118,17 +132,17 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				  imgSrc = img.attr("src");
         				  //http://www.kiva.org/img/w450h360/852894.jpg
         				  //http://www.kiva.org/img/w160h120/852894.jpg
-        				  Log.v("KivaJapanReaderWidget", imgSrc);
+//        				  Log.v("KivaJapanReaderWidget", imgSrc);
         				  String[] urls = imgSrc.split("/");
-        				  Log.v("KivaJapanReaderWidget", "url.length="+String.valueOf(urls.length));
-        				  Log.v("KivaJapanReaderWidget", "url[0]="+urls[0]);
-        				  Log.v("KivaJapanReaderWidget", "url[1]="+urls[1]);
-        				  Log.v("KivaJapanReaderWidget", "url[2]="+urls[2]);
-        				  Log.v("KivaJapanReaderWidget", "url[3]="+urls[3]);
-        				  Log.v("KivaJapanReaderWidget", "url[4]="+urls[4]);
-        				  Log.v("KivaJapanReaderWidget", "url[5]="+urls[5]);
+//        				  Log.v("KivaJapanReaderWidget", "url.length="+String.valueOf(urls.length));
+//        				  Log.v("KivaJapanReaderWidget", "url[0]="+urls[0]);
+//        				  Log.v("KivaJapanReaderWidget", "url[1]="+urls[1]);
+//        				  Log.v("KivaJapanReaderWidget", "url[2]="+urls[2]);
+//        				  Log.v("KivaJapanReaderWidget", "url[3]="+urls[3]);
+//        				  Log.v("KivaJapanReaderWidget", "url[4]="+urls[4]);
+//        				  Log.v("KivaJapanReaderWidget", "url[5]="+urls[5]);
         				  imgSrc = "http://www.kiva.org/img/w160h120/" + urls[5];
-        				  Log.v("KivaJapanReaderWidget", imgSrc);
+//        				  Log.v("KivaJapanReaderWidget", imgSrc);
         				  Bitmap bmp = getBitmap(imgSrc);
         				  if(bmp != null){
         					  views.setImageViewBitmap(R.id.imageView1, bmp);
@@ -144,7 +158,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				Elements links1 = element.getElementsByTag("a");
         				for (Element link1 : links1) {
         					name = link1.text();
-        					Log.v("KivaJapanReaderWidget", name);
+//        					Log.v("KivaJapanReaderWidget", name);
         	                views.setTextViewText(R.id.textView_large, name);
         				}
         			}
@@ -161,7 +175,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 	        				  // /img/webpage/national_flags/VN.jpg
 	        				  // http://kivajapan.jp/img/webpage/national_flags/VN.jpg
 	        				  imgSrc = kivaUrl + imgSrc;
-	        				  Log.v("KivaJapanReaderWidget", imgSrc);
+//	        				  Log.v("KivaJapanReaderWidget", imgSrc);
 	        				  Bitmap bmp = getBitmap(imgSrc);
 	        				  if(bmp != null){
 	        					  views.setImageViewBitmap(R.id.imageView2, bmp);
@@ -176,7 +190,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				Elements spans = element.getElementsByTag("span");
         				for (Element span : spans) {
         					country = span.text();
-        					Log.v("KivaJapanReaderWidget", country);
+//        					Log.v("KivaJapanReaderWidget", country);
         				}
         			}
         			
@@ -189,7 +203,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				Elements dds = element.getElementsByTag("dd");
         				for (Element dd : dds) {
         					category = dd.text();
-        					Log.v("KivaJapanReaderWidget", category);
+//        					Log.v("KivaJapanReaderWidget", category);
         					break;
         				}
         			}
@@ -208,7 +222,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         				Elements anchors = element.getElementsByTag("a");
         				for (Element anchor : anchors) {
         					translator = anchor.text();
-        					Log.v("KivaJapanReaderWidget", translator);
+//        					Log.v("KivaJapanReaderWidget", translator);
         	                views.setTextViewText(R.id.textView_small, "翻訳者：" + translator);
         				}
         			}
@@ -228,19 +242,19 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 	
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
-		Log.v("KivaJapanReaderWidget", "onDeleted");
+//		Log.v("KivaJapanReaderWidget", "onDeleted");
 		super.onDeleted(context, appWidgetIds);
 	}
 	
 	@Override
 	public void onDisabled(Context context) {
-		Log.v("KivaJapanReaderWidget", "onDisabled");
+//		Log.v("KivaJapanReaderWidget", "onDisabled");
 		super.onDisabled(context);
 	}
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Log.v("KivaJapanReaderWidget", "onReceive");
+//		Log.v("KivaJapanReaderWidget", "onReceive");
 		super.onReceive(context, intent);
 	}
 	
