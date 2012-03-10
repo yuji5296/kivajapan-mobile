@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="Kiva" >
+
+        <EditTextPreference
+            android:key="kiva_id"
+            android:title="Kiva ID" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="KivaJapan" >
+
+        <EditTextPreference
+            android:key="kivajapan_id"
+            android:title="KivaJapan ID" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="RSS Reader" >
+
+        <ListPreference
+            android:defaultValue="60"
+            android:entries="@array/interval_lists_string"
+            android:entryValues="@array/interval_lists_integer"
+            android:key="widgetRefreshInterval"
+            android:title="ウィジェット更新間隔" />
+
+        <CheckBoxPreference android:title="保存する" />
+        <EditTextPreference android:title="最終更新時間" android:key="rssLastUpdate"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Widget" >
+
+        <ListPreference
+            android:defaultValue="60"
+            android:entries="@array/interval_lists_string"
+            android:entryValues="@array/interval_lists_integer"
+            android:key="widgetRefreshInterval"
+            android:title="ウィジェット更新間隔" />
+
+        <Preference android:title="最終更新時間" android:key="widgetLastUpdate"/>
+    </PreferenceCategory>
+        
+    <PreferenceCategory android:title="Help" >
+
+        <PreferenceScreen android:title="Kivaについて" >
+
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="jp.kivajapan.rssreader.HelpActivity"
+                android:targetPackage="jp.kivajapan.rssreader" />
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="KivaJapanについて" >
+
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="jp.kivajapan.rssreader.HelpActivity"
+                android:targetPackage="jp.kivajapan.rssreader" />
+        </PreferenceScreen>
+
+        <PreferenceScreen android:title="このアプリについて" >
+
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="jp.kivajapan.rssreader.AboutActivity"
+                android:targetPackage="jp.kivajapan.rssreader" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

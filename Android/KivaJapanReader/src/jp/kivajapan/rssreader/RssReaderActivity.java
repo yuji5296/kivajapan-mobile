@@ -2,10 +2,12 @@ package jp.kivajapan.rssreader;
 
 
 import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,10 +15,12 @@ import android.view.View;
 //import android.view.animation.Animation;
 //import android.view.animation.AnimationUtils;
 //import android.widget.ImageView;
+import android.widget.AbsListView;
 import android.widget.ListView;
 //import android.widget.Toast;
+import android.widget.Toast;
 
-public class RssReaderActivity extends ListActivity {
+public class RssReaderActivity extends ListActivity implements ListView.OnScrollListener{
 	//public static final String RSS_FEED_URL = "http://itpro.nikkeibp.co.jp/rss/ITpro.rdf";
 	public static final String RSS_FEED_URL = "http://kivajapan.jp/atom.xml";
 //	public static final int MENU_ITEM_RELOAD = Menu.FIRST; 
@@ -46,18 +50,14 @@ public class RssReaderActivity extends ListActivity {
 		// Itemオブジェクトを保持するためのリストを生成し、アダプタに追加する
 		mItems = new ArrayList<Item>();
 		mAdapter = new RssListAdapter(this, mItems);
-
-		// タスクを起動する
-		RssParserTask task = new RssParserTask(this, mAdapter);
-		task.execute(RSS_FEED_URL);
-
+		mAdapter = readAdapter();
+		
 		// アダプタをリストビューにセットする
-		//setListAdapter(mAdapter);
+		setListAdapter(mAdapter);
+		
+		//更新
+		update();
 
-		// サンプル用に空のItemオブジェクトをセットする
-		//for (int i = 0; i < 10; i++) {
-			//mAdapter.add(new Item());
-		//}
     }
     
 //    @Override
@@ -107,8 +107,8 @@ public class RssReaderActivity extends ListActivity {
 		intent.putExtra("LINK", item.getLink());
 		intent.putExtra("IMAGE", item.getImage());
 		startActivity(intent);
-		Log.v("KivaJapanReader",(String)item.getTitle());
-		Log.v("KivaJapanReader",(String)item.getImage());
+//		Log.v("KivaJapanReader",(String)item.getTitle());
+//		Log.v("KivaJapanReader",(String)item.getImage());
 	}
 	
 	// MENUボタンを押したときの処理
@@ -121,7 +121,7 @@ public class RssReaderActivity extends ListActivity {
     	//メニューインフレーターを取得
     	MenuInflater inflater = getMenuInflater();
     	//xmlのリソースファイルを使用してメニューにアイテムを追加
-    	inflater.inflate(R.menu.menu, menu);
+    	inflater.inflate(R.menu.menu_list, menu);
     	//できたらtrueを返す
 		return result;
 	}
@@ -129,51 +129,117 @@ public class RssReaderActivity extends ListActivity {
 	// MENUの項目を押したときの処理
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent intent;
 
 		switch (item.getItemId()) {
 			// 更新
 			case R.id.menu_update:
-
-				//ListViewの表示をemptyに変更する
-				// アダプタを初期化し、タスクを起動する
-//				mItems.clear();
-				mAdapter.clear();
-//				mItems = new ArrayList<Item>();
-				mAdapter = new RssListAdapter(this, mItems);
-//				//Adapterの更新
-//				mAdapter.notifyDataSetChanged();
-//				//ListViewの更新
-//				listview = getListView();
-//				listview.invalidateViews();
-//				listview.invalidate();
-				
-				// タスクはその都度生成する
-				RssParserTask task = new RssParserTask(this, mAdapter);
-				task.execute(RSS_FEED_URL);
-
-				//表示後リストのスタイルが適用されない
-				//list_row_background.xmlを修正で解決
-				//android:state_window_focused="false"の場合に背景色を透過にする設定を無効化
-				//更新時にandroid:state_window_focusedをtrueにすれば良い？
-				
+				update();
 				break;
-//				return true;
-			// 情報
-			case R.id.menu_info:
-				intent = new Intent(this, AboutActivity.class);
+			// ホーム
+			case R.id.menu_home:
+				goHome();
+				break;
+			// 設定
+			case R.id.menu_preference:
+				Intent intent;
+				intent = new Intent(this, KivaJapanPreferenceActivity.class);
 				startActivity(intent);
 				break;
-//				return true;
-				
-			// ヘルプ
-			case R.id.menu_help:
-				intent = new Intent(this, HelpActivity.class);
-				startActivity(intent);
+			// 削除
+			case R.id.menu_delete:
+				delete();
 				break;
-//				return true;
+			// 検索
+			case R.id.menu_search:
+				search();
+				break;
+			// ソート
+			case R.id.menu_sort:
+				sort();
+				break;
+			// フィルタ
+			case R.id.menu_filter:
+				filter();
+				break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	private void goHome(){
+		Intent intent;
+		intent = new Intent(this, TopActivity.class);
+		startActivity(intent);
+	}
+	private void update(){
+		//ListViewの表示をemptyに変更する
+		// アダプタを初期化し、タスクを起動する
+//		mItems.clear();
+//		mAdapter.clear();
+//		mItems = new ArrayList<Item>();
+//		mAdapter = new RssListAdapter(this, mItems);
+//		//ListViewの更新
+//		listview = getListView();
+//		listview.invalidateViews();
+//		listview.invalidate();
+		
+		// タスクはその都度生成する
+		RssParserTask task = new RssParserTask(this, mAdapter);
+		task.execute(RSS_FEED_URL);
+		//Adapterの更新
+		mAdapter.notifyDataSetChanged();
+
+		//表示後リストのスタイルが適用されない
+		//list_row_background.xmlを修正で解決
+		//android:state_window_focused="false"の場合に背景色を透過にする設定を無効化
+		//更新時にandroid:state_window_focusedをtrueにすれば良い？
+		
+	}
+	private void search(){
+    	Toast.makeText(this, "検索機能追加予定", Toast.LENGTH_SHORT).show();	
+	}
+	private void sort(){
+    	Toast.makeText(this, "ソート機能追加予定", Toast.LENGTH_SHORT).show();	
+	}
+	private void filter(){
+    	Toast.makeText(this, "フィルタ機能追加予定", Toast.LENGTH_SHORT).show();	
+	}
+	public RssListAdapter readAdapter(){
+		RssDatabase db = new RssDatabase(this);
+		db.create("read");
+		List<Item> items = new ArrayList<Item>();
+		items = db.getItem();
+		for ( int i = 0; i < items.size(); ++i ) {
+			mAdapter.add(items.get(i));
+		}
+		db.close();
+		return mAdapter;
+
+	}
+	private void delete(){
+		//データベースを作成
+		RssDatabase db = new RssDatabase(this);
+		db.create("write");
+		db.delete();
+		db.close();
+		mAdapter.clear();
+		mAdapter = new RssListAdapter(this, mItems);
+		mAdapter.notifyDataSetChanged();
+		//最終更新日を初期化
+		PreferenceManager.getDefaultSharedPreferences(this).edit().putString("rssLastUpdate", "No update").commit();
+	}
+
+	public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+		// TODO Auto-generated method stub
+		// タスクはその都度生成する
+		mAdapter.clear();
+		mAdapter = new RssListAdapter(this, mItems);
+		RssParserTask task = new RssParserTask(this, mAdapter);
+		task.execute(RSS_FEED_URL);
+		mAdapter.notifyDataSetChanged();
 	}
 
 }

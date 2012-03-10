@@ -9,20 +9,26 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 //import android.view.animation.Animation;
 //import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 //URIで指定した画像を読み込みImageViewに表示する。
-public class DownloadTask extends AsyncTask<String, Void, Bitmap> {  
+public class DownloadTask extends AsyncTask<String, Void, Bitmap> {
+	private Activity activity; 
+
     // アイコンを表示するビュー  
     private ImageView imageView;  
   
     // コンストラクタ  
-    public DownloadTask(ImageView imageView) {
+    public DownloadTask(Activity activity, ImageView imageView) {
+    	this.activity = activity;
         this.imageView = imageView;
     	// プログレス画像を表示（更新時に表示する為にここで設定）
         this.imageView.setImageResource(R.drawable.progresscircle_small);
@@ -52,9 +58,11 @@ public class DownloadTask extends AsyncTask<String, Void, Bitmap> {
 		} catch (ClientProtocolException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			return null;
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			return null;
 		}
 		Bitmap bitm = null;
 		if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -79,6 +87,10 @@ public class DownloadTask extends AsyncTask<String, Void, Bitmap> {
     @Override  
     protected void onPostExecute(Bitmap result) {  
     	this.imageView.clearAnimation();
+    	if (result == null){
+        	Toast.makeText(activity, "No network", Toast.LENGTH_SHORT).show();
+    		return;
+    	}
     	this.imageView.setImageBitmap(result);  
 		this.imageView.invalidate();
     }

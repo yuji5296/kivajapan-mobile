@@ -2,15 +2,19 @@ package jp.kivajapan.rssreader;
 
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.database.sqlite.SQLiteDatabase;
 
 public class TopActivity extends Activity {
 	String kivaUrl = "http://kivajapan.jp/";
@@ -22,16 +26,22 @@ public class TopActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.top);
-
+        
     	//ピックアップ起業家の写真を取得して表示
     	getPickupWithJsoup();
-  
+    	
+    	//最終更新時間を更新
+//    	PreferenceManager.setDefaultSharedPreferences(context).getString("widgetRefreshInterval", "60");
+//    	PreferenceManager.setDefaultValues(this, resId, readAgain);
+//    	Preference searchbooksPref;  
+
+//    	SharedPreferences.getString(key, "rssLastUpdate");
 	}
 	
 	//Kiva Japan Topページのピックアップ起業家画像を表示
 	public void getPickupWithJsoup() {	
     	ImageView animWindow = (ImageView)this.findViewById(R.id.imageView1);
-    	DownloadPickupTask task = new DownloadPickupTask(animWindow);  
+    	DownloadPickupTask task = new DownloadPickupTask(this,animWindow);  
 		task.execute(kivaUrl);
    	}	
 	
