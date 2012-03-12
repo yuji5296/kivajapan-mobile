@@ -17,14 +17,7 @@
 
     <PreferenceCategory android:title="RSS Reader" >
 
-        <ListPreference
-            android:defaultValue="60"
-            android:entries="@array/interval_lists_string"
-            android:entryValues="@array/interval_lists_integer"
-            android:key="widgetRefreshInterval"
-            android:title="ウィジェット更新間隔" />
-
-        <CheckBoxPreference android:title="保存する" />
+        <CheckBoxPreference android:title="RSSを保存する" android:summary="受信したRSSを端末内に保存しておくと次回からは通信せずに見ることができます。" android:key="isSaveRss" android:defaultValue="true"/>
         <EditTextPreference android:title="最終更新時間" android:key="rssLastUpdate"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="Widget" >

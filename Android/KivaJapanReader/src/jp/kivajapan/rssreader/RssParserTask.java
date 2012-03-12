@@ -70,6 +70,7 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 		//DBからItemを読み込みAdapterにセット
 //		RssListAdapter result = null;
 //		mActivity.setListAdapter(result);
+    	Toast.makeText(mActivity, "Updating...", Toast.LENGTH_SHORT).show();
 	}
 
 	// バックグラウンドにおける処理を担う。タスク実行時に渡された値を引数とする
@@ -142,6 +143,15 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 							} else if (tag.equals("link")) {
 								//<link>要素のhref属性を取得
 								currentItem.setLink(parser.getAttributeValue(null,"href"));
+							} else if (tag.equals("id")) {
+								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
+								currentItem.setId(str);
+							} else if (tag.equals("published")) {
+								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
+								currentItem.setPublished(str);
+							} else if (tag.equals("updated")) {
+								String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
+								currentItem.setUpdated(str);
 //							} else if (tag.equals("description")) {
 //								currentItem.setDescription(parser.nextText());
 							} else if (tag.equals("summary")) {
@@ -168,12 +178,13 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 							}
 						}else if (tag.equals("updated")) {
 							String str = new String(parser.nextText().getBytes("ISO-8859-1"),"UTF-8");
-							Logout.d(str);
+							Logout.v(str);
 							//最終更新日を取得
-							String lastUpdate = PreferenceManager.getDefaultSharedPreferences(mActivity).getString("rssLastUpdate", str);
+							String lastUpdate = PreferenceManager.getDefaultSharedPreferences(mActivity).getString("rssLastUpdate", "");
 							if (str.equals(lastUpdate)){
 								//同じRSSなので処理を中断
 								return_code = NOUPDATE;
+								Logout.v("No update.");
 								return null;
 							}
 							//更新日を最終更新日に設定
@@ -193,8 +204,9 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			db.close();
 		}
-		db.close();
 		return mAdapter;
 	}
 

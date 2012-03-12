@@ -10,7 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /* データベース名 */  
     private final static String DB_NAME = "kivajapanrssdb";  
     /* データベースのバージョン */  
-    private final static int DB_VER = 2;  
+    private final static int DB_VER = 3;  
     
 	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VER);
@@ -24,12 +24,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sql += "create table MyTable (";  
         sql += " No integer primary key autoincrement";  
         sql += ",Title text not null";  
-        sql += ",Link text";  
-        sql += ",Summary text";  
-        sql += ",Content text";  
-        sql += ",Author text";  
-        sql += ",Image text";  
-        sql += ",Bmp blob";  
+        sql += ",Link text";
+        sql += ",Id text";
+        sql += ",Published text";
+        sql += ",Updated text";
+        sql += ",Summary text";
+        sql += ",Content text";
+        sql += ",Author text"; 
+        sql += ",Image text"; 
+        sql += ",Bmp blob";
         sql += ")";  
         db.execSQL(sql);  
 	}
