@@ -1,7 +1,5 @@
 package jp.kivajapan.rssreader;
 
-import android.graphics.Bitmap;
-
 public class Item {
 	// 記事のタイトル
 	private String mTitle;
@@ -18,11 +16,17 @@ public class Item {
 	// 画像URL
 	private String mImage;
 	// 画像データ
-	private byte[] mBmp; 
+	private byte[] mBmp;
+	private String mId;
+	private String mPublished;
+	private String mUpdated; 
 
 	public Item() {
 		mTitle = "";
 		mLink = "";
+		mId = "";
+		mPublished = "";
+		mUpdated = "";
 //		mDescription = "";
 		mSummary = "";
 		mContent = "";
@@ -92,6 +96,36 @@ public class Item {
 	}
 	public void setBmp(byte[] bmp) {
 		mBmp = bmp;
+	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return mId;
+	}
+
+	public String getPublished() {
+		// TODO Auto-generated method stub
+		return mPublished;
+	}
+
+	public String getUpdated() {
+		// TODO Auto-generated method stub
+		return mUpdated;
+	}
+
+	public void setId(String string) {
+		// TODO Auto-generated method stub
+		mId = string;
+	}
+
+	public void setPublished(String string) {
+		// TODO Auto-generated method stub
+		mPublished = string;
+	}
+
+	public void setUpdated(String string) {
+		// TODO Auto-generated method stub
+		mUpdated = string;
 	}
 
 }

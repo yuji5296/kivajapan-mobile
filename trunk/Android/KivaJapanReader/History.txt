@@ -57,3 +57,5 @@
 ・ネットワーク未接続時の対応
 ・ウィジェット更新タイマー対応
 ・Preference対応
+2012/03/12 Ver.1.6.0
+・DBにId,Published,Updatedを追加

@@ -225,6 +225,8 @@ public class RssReaderActivity extends ListActivity implements ListView.OnScroll
 		mAdapter.notifyDataSetChanged();
 		//最終更新日を初期化
 		PreferenceManager.getDefaultSharedPreferences(this).edit().putString("rssLastUpdate", "No update").commit();
+    	Toast.makeText(this, "Delete all items.", Toast.LENGTH_SHORT).show();	
+
 	}
 
 	public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
