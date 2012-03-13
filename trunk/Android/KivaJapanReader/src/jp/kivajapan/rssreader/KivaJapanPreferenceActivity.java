@@ -1,9 +1,14 @@
 package jp.kivajapan.rssreader;
 
+import java.util.Map;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 
 public class KivaJapanPreferenceActivity extends android.preference.PreferenceActivity {
 	@Override
@@ -11,12 +16,29 @@ public class KivaJapanPreferenceActivity extends android.preference.PreferenceAc
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preference);
 		//設定されている値をsummaryに表示
-		EditTextPreference edittext_preference = (EditTextPreference)getPreferenceScreen().findPreference("kiva_id");
-		edittext_preference.setSummary(edittext_preference.getText());
-		edittext_preference = (EditTextPreference)getPreferenceScreen().findPreference("kivajapan_id");
-		edittext_preference.setSummary(edittext_preference.getText());
-		edittext_preference = (EditTextPreference)getPreferenceScreen().findPreference("rssLastUpdate");
-		edittext_preference.setSummary(edittext_preference.getText());
+//		以下のコードを使って全てのPreferenceを表示するように修正
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		Map<String, ?> keys = sharedPreferences.getAll();
+		if (keys.size() > 0) {
+			for (String key : keys.keySet()) {
+				// 設定されている値をsummaryに表示
+//				if (key.equals("Save")) {
+//					CheckBoxPreference mCheckBoxPreference = null;
+//					mCheckBoxPreference = (CheckBoxPreference) getPreferenceScreen().findPreference(key);
+//					mCheckBoxPreference.setSummary(sharedPreferences.getBoolean(key, false) ? "Disable" : "Enable");
+				if (key.equals("rssLastUpdate")|key.equals("widgetLastUpdate")) {
+					EditTextPreference mEditTextPreference = null;
+					mEditTextPreference = (EditTextPreference) getPreferenceScreen().findPreference(key);
+					mEditTextPreference.setSummary(sharedPreferences.getString(key, ""));
+				}else if(key.equals("widgetRefreshInterval")){
+					ListPreference mListPreference = null;
+					mListPreference = (ListPreference)getPreferenceScreen().findPreference(key);
+					mListPreference.setSummary(sharedPreferences.getString(key, ""));
+				}
+
+			}
+		}
+
 	}
 	@Override  
 	protected void onResume() {  

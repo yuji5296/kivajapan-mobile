@@ -24,6 +24,9 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 //import android.net.Uri;
@@ -32,6 +35,7 @@ import android.preference.PreferenceManager;
 //import android.widget.ImageView;
 import android.widget.RemoteViews;
 //import android.widget.Toast;
+import android.widget.TextView;
 
 
 public class KivaJapanWidgetProvider extends AppWidgetProvider {
@@ -44,6 +48,20 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 //		Log.v("KivaJapanReaderWidget", "onEnabled");
 		super.onEnabled(context);
 		
+		//バージョン表示
+		String packegeName = context.getPackageName();
+		PackageManager packageManager = context.getPackageManager();
+		PackageInfo packageInfo;
+		try {
+			packageInfo = packageManager.getPackageInfo(packegeName, PackageManager.GET_META_DATA);
+			// AppWidgetのレイアウト・リソースを取得
+			RemoteViews views = new RemoteViews(packegeName, R.layout.widget);
+			views.setTextViewText(R.id.textView_small, "Version."+ packageInfo.versionName);
+		} catch (NameNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		};
+				
 		//クリック時に実行するIntentの設定
 //		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
 //		Intent clickIntent = new Intent(context, AboutActivity.class);
@@ -103,6 +121,8 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
                 Date update = new Date();
 //        		Log.v("KivaJapanReaderWidget", update.toLocaleString());
                 views.setTextViewText(R.id.textView_small, update.toLocaleString());
+                //Preferenceに表示
+				PreferenceManager.getDefaultSharedPreferences(context).edit().putString("widgetLastUpdate", update.toLocaleString()).commit();
 
                 // KivaJapanのピックアップ起業家情報を取得
 
