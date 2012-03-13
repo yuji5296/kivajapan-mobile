@@ -184,8 +184,9 @@ public class RssReaderActivity extends ListActivity implements ListView.OnScroll
 		// タスクはその都度生成する
 		RssParserTask task = new RssParserTask(this, mAdapter);
 		task.execute(RSS_FEED_URL);
-		//Adapterの更新
-		mAdapter.notifyDataSetChanged();
+//		//Adapterの更新
+//		mAdapter.clear();
+//		mAdapter.notifyDataSetChanged();
 
 		//表示後リストのスタイルが適用されない
 		//list_row_background.xmlを修正で解決
@@ -207,9 +208,11 @@ public class RssReaderActivity extends ListActivity implements ListView.OnScroll
 		db.create("read");
 		List<Item> items = new ArrayList<Item>();
 		items = db.getItem();
+		mAdapter.clear();
 		for ( int i = 0; i < items.size(); ++i ) {
 			mAdapter.add(items.get(i));
 		}
+		mAdapter.notifyDataSetChanged();
 		db.close();
 		return mAdapter;
 

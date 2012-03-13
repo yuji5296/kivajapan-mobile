@@ -106,8 +106,12 @@ public class RssParserTask extends AsyncTask<String, Integer, RssListAdapter> {
     		}
     	}else{
         	Toast.makeText(mActivity, "Updated", Toast.LENGTH_SHORT).show();
-        	result = mActivity.readAdapter();
-    		mActivity.setListAdapter(result);
+    		//Adapterの更新
+    		mAdapter.clear();
+        	mAdapter = mActivity.readAdapter();
+//    		mActivity.setListAdapter(mAdapter);
+    		mAdapter.notifyDataSetChanged();
+
     	}
 	}
 

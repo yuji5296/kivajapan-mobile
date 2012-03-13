@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="Kiva" >
-
-        <EditTextPreference
-            android:key="kiva_id"
-            android:title="Kiva ID" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="KivaJapan" >
-
-        <EditTextPreference
-            android:key="kivajapan_id"
-            android:title="KivaJapan ID" />
-    </PreferenceCategory>
+<!--    <PreferenceCategory android:title="Kiva" >-->
+<!---->
+<!--        <EditTextPreference-->
+<!--            android:key="kiva_id"-->
+<!--            android:title="Kiva ID" />-->
+<!--    </PreferenceCategory>-->
+<!---->
+<!--    <PreferenceCategory android:title="KivaJapan" >-->
+<!---->
+<!--        <EditTextPreference-->
+<!--            android:key="kivajapan_id"-->
+<!--            android:title="KivaJapan ID" />-->
+<!--    </PreferenceCategory>-->
 
     <PreferenceCategory android:title="RSS Reader" >
 
-        <CheckBoxPreference android:title="RSSを保存する" android:summary="受信したRSSを端末内に保存しておくと次回からは通信せずに見ることができます。" android:key="isSaveRss" android:defaultValue="true"/>
+<!--        <CheckBoxPreference android:title="RSSを保存する" android:summary="受信したRSSを端末内に保存しておくと次回からは通信せずに見ることができます。" android:key="isSaveRss" android:defaultValue="true"/>-->
         <EditTextPreference android:title="最終更新時間" android:key="rssLastUpdate"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="Widget" >
@@ -29,7 +29,7 @@
             android:key="widgetRefreshInterval"
             android:title="ウィジェット更新間隔" />
 
-        <Preference android:title="最終更新時間" android:key="widgetLastUpdate"/>
+        <EditTextPreference android:title="最終更新時間" android:key="widgetLastUpdate"/>
     </PreferenceCategory>
         
     <PreferenceCategory android:title="Help" >
