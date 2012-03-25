@@ -35,7 +35,6 @@ import android.preference.PreferenceManager;
 //import android.widget.ImageView;
 import android.widget.RemoteViews;
 //import android.widget.Toast;
-import android.widget.TextView;
 
 
 public class KivaJapanWidgetProvider extends AppWidgetProvider {

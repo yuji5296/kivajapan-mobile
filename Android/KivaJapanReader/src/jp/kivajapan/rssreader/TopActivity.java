@@ -2,19 +2,15 @@ package jp.kivajapan.rssreader;
 
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.database.sqlite.SQLiteDatabase;
 
 public class TopActivity extends Activity {
 	String kivaUrl = "http://kivajapan.jp/";
