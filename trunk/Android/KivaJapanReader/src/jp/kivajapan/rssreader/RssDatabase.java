@@ -11,8 +11,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-import android.widget.TextView;
 
 /**
  * @author yuji
@@ -135,7 +133,8 @@ public class RssDatabase {
         sql.append(" ,Author");  
         sql.append(" ,Image");
         sql.append(" ,Bmp");
-        sql.append(" FROM MyTable;");  
+        sql.append(" FROM MyTable ");
+        sql.append("order by id desc;");
         //rawQueryメソッドでデータを取得  
             Cursor cursor = db.rawQuery(sql.toString(), null);   
             //TextViewに表示  

@@ -1,21 +1,10 @@
 package jp.kivajapan.rssreader;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RssListAdapter extends ArrayAdapter<Item> {
-	private Activity activity;
 	private LayoutInflater mInflater;
 	private TextView mTitle;
 	private TextView mDescr;
@@ -35,7 +23,7 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 
 	public RssListAdapter(Context context, List<Item> objects) {
 		super(context, 0, objects);
-		activity = (Activity) context;
+//		activity = (Activity) context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -69,7 +57,7 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 
 			// 画像の取得
 			// 翻訳者の写真をRSSから取得して表示しようとしたがimgタグのsrcを取得できない 
-			String image = item.getImage();
+//			String image = item.getImage();
 //			String image = "http://www.kiva.org/img/w80h80/674364.jpg";
 //			Uri uri = Uri.parse(image);
 			mImage = (ImageView) view.findViewById(R.id.item_image);
@@ -79,7 +67,7 @@ public class RssListAdapter extends ArrayAdapter<Item> {
 //			task.execute(image);
 	    	
 //			Log.v("KivaJapanReader", image);
-			String descr = "<img src='"+ image + "'>";
+//			String descr = "<img src='"+ image + "'>";
 //			Log.v("KivaJapanReader", descr);
 //			mWebview = (WebView) view.findViewById(R.id.webView1);
 			//CharSequence sHtml = Html.fromHtml(descr);
