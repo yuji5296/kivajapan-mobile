@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.panasonic.founder.words.dayafterday"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_short_name" android:persistent="false">
+        <activity android:name=".DadCalendarActivity"
+                  android:label="@string/app_name">
+        </activity>
+        <activity android:name=".DadTopActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DadMainActivity"
+                  android:label="@string/app_name" android:configChanges="orientation">
+        </activity>
+		<receiver android:name=".DadWidgetProvider" 
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" 
+                android:resource="@xml/widget" />
+		</receiver>
+        <activity android:name=".AidaMitsuoActivity"
+                  android:label="相田みつを">
+        </activity>
+        <activity android:name=".MichiActivity"
+                  android:label="道をひらく">
+        </activity>
+            
+    </application>
+    <uses-sdk android:minSdkVersion="3" />
+
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+</manifest> 

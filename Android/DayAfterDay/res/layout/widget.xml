@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:background="@color/backgroundcolor">
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/app_name"
+    android:background="@color/titlebackgroundcolor" android:textColor="@color/titletextcolor"/>
+<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
+    <ImageView android:id="@+id/imageView1" android:layout_height="wrap_content" android:src="@drawable/icon" android:scaleType="fitCenter" android:layout_width="100px"></ImageView>
+    <TextView android:id="@+id/textView1" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:textColor="@color/textcolor" android:text="今日の一言"></TextView>
+</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">今日の一言</string>
+    <string name="app_name">松下幸之助の一日一話</string>
+    <string name="app_short_name">一日一話</string>
+</resources>
