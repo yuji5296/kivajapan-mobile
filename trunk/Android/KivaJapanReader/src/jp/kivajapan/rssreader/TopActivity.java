@@ -147,12 +147,15 @@ public class TopActivity extends Activity {
 			break;
 		// 検索
 		case R.id.menu_search:
-			intent = new Intent(Intent.ACTION_SEARCH);
-			// intent.getStringExtra(SearchManager.QUERY);
+//			onSearchRequested();
+			intent = new Intent();
+			intent.setAction("android.intent.action.SEARCH");
+//			intent.putExtra(SearchManager.QUERY,"Kiva");
 			intent.putExtra("query", "Kiva");
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			try {
-				startActivityForResult(intent, 0);
+//				startActivityForResult(intent, 0);
+				startActivity(Intent.createChooser(intent,getString(R.string.app_name)));
 			} catch (android.content.ActivityNotFoundException ex) {
 				Toast.makeText(this, "client not found", Toast.LENGTH_LONG)
 						.show();

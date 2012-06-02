@@ -5,7 +5,7 @@
     <string name="hello">Hello Kiva Japan!</string>
     <string name="app_name">Kiva Japan Reader</string>
     <string name="author">Yuji DOI</string>
-    <string name="copyright">(c)2011, Yuji DOI</string>
+    <string name="copyright">&#169;2011-2012, Yuji DOI</string>
     <string name="mail">yuji5296@gmail.com</string>
     <string name="url_site">https://sites.google.com/site/kivajapanrssreader/</string>
     <string name="url_code">http://code.google.com/p/kivajapan-mobile/</string>
