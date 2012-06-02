@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -151,7 +152,8 @@ public class RssReaderActivity extends ListActivity implements ListView.OnScroll
 				break;
 			// 検索
 			case R.id.menu_search:
-				search();
+//				search("");
+				onSearchRequested();
 				break;
 			// ソート
 			case R.id.menu_sort:
@@ -194,8 +196,8 @@ public class RssReaderActivity extends ListActivity implements ListView.OnScroll
 		//更新時にandroid:state_window_focusedをtrueにすれば良い？
 		
 	}
-	private void search(){
-    	Toast.makeText(this, "検索機能追加予定", Toast.LENGTH_SHORT).show();	
+	private void search(String query){
+    	Toast.makeText(this, query+"を検索中", Toast.LENGTH_SHORT).show();	
 	}
 	private void sort(){
     	Toast.makeText(this, "ソート機能追加予定", Toast.LENGTH_SHORT).show();	
@@ -246,5 +248,15 @@ public class RssReaderActivity extends ListActivity implements ListView.OnScroll
 		task.execute(RSS_FEED_URL);
 		mAdapter.notifyDataSetChanged();
 	}
-
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+	  if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	    String query = intent.getStringExtra(SearchManager.QUERY);
+	    // 検索処理を実行 今回はToastを表示
+//	    Toast.makeText(this, query, Toast.LENGTH_LONG).show();
+	    // 自分がやった実装ではGeoCoderで地名検索させて、Addressに変換させた。
+	    search(query);
+	  }
+	}
 }
