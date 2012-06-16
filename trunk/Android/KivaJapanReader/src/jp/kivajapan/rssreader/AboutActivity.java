@@ -106,9 +106,16 @@ public class AboutActivity extends Activity {
 				}
 				break;
 			case R.id.menu_goto_facebook:
-				uri = Uri.parse("http://www.facebook.com/pages/KivaJapan-Reader/274413395920688");
-				intent = new Intent(Intent.ACTION_VIEW,uri);
-				startActivity(intent);
+				try {
+					uri = Uri.parse("fb://page/274413395920688");
+					intent = new Intent(Intent.ACTION_VIEW, uri);  
+					startActivity(intent);
+				}
+				catch (ActivityNotFoundException e) {
+					uri = Uri.parse("http://www.facebook.com/KivaJapanReader/");
+					intent = new Intent(Intent.ACTION_VIEW, uri);  
+					startActivity(intent);
+				}
 				break;
 			case R.id.menu_goto_twitter:
 				uri = Uri.parse("http://twitter.com/#!/KivaJapanReader");

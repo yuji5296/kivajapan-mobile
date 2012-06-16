@@ -1,6 +1,8 @@
 package jp.kivajapan.rssreader;
 
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,8 +21,14 @@ public class TopActivity extends Activity {
 	String imageUrl = "http://www.kiva.org/img/w450h360/776940.jpg";
 	String html = "<img src='http://www.kiva.org/img/w450h360/776940.jpg' width='100%'>";
 
+	GoogleAnalyticsTracker tracker;
+	
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		tracker = GoogleAnalyticsTracker.getInstance();  
+		tracker.startNewSession("UA-20717846-4", 60, this); 
+		tracker.trackPageView("/TopActivity");
+
+        super.onCreate(savedInstanceState);
 		setContentView(R.layout.top);
         
     	//ピックアップ起業家の写真を取得して表示
@@ -42,6 +50,7 @@ public class TopActivity extends Activity {
    	}	
 	
 	public void onClick_Pickup(View v) {
+		tracker.trackPageView("/TopActivity/onClick_Pickup");
 		String url = (String) v.getTag();
 		Uri uri = Uri.parse("http://kivajapan.jp" + url);
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -49,23 +58,24 @@ public class TopActivity extends Activity {
 	}
 	
 	public void onClickButton1(View v) {
+		tracker.trackPageView("/TopActivity/onClickButton1");
 		// RSSリーダ表示
 		Intent intent = new Intent(this, RssReaderActivity.class);
 		startActivity(intent);
 	}
 
 	public void onClickButton2(View v) {
+		tracker.trackPageView("/TopActivity/onClickButton2");
 		// Kiva Japanについて説明
-		Uri uri = Uri
-				.parse("http://kivajapan.jp/?page=Bureau&action=beginners");
+		Uri uri = Uri.parse("http://kivajapan.jp/?page=Bureau&action=beginners");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
 
 	public void onClickButton3(View v) {
+		tracker.trackPageView("/TopActivity/onClickButton3");
 		// 翻訳ページにジャンプ
-		Uri uri = Uri
-				.parse("http://kivajapan.jp/?page=Bureau&action=about_translator");
+		Uri uri = Uri.parse("http://kivajapan.jp/?page=Bureau&action=about_translator");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
@@ -103,27 +113,30 @@ public class TopActivity extends Activity {
 		switch (item.getItemId()) {
 		// 更新
 		case R.id.menu_update:
+			tracker.trackPageView("/TopActivity/menu_update");
 			getPickupWithJsoup();
 			break;
 		// 設定
 		case R.id.menu_preference:
+			tracker.trackPageView("/TopActivity/menu_preference");
 			intent = new Intent(this, KivaJapanPreferenceActivity.class);
 			startActivity(intent);
 			break;
 		// 情報
 		case R.id.menu_info:
+			tracker.trackPageView("/TopActivity/menu_info");
 			intent = new Intent(this, AboutActivity.class);
 			startActivity(intent);
 			break;
-
 		// ヘルプ
 		case R.id.menu_help:
+			tracker.trackPageView("/TopActivity/menu_help");
 			intent = new Intent(this, HelpActivity.class);
 			startActivity(intent);
 			break;
-
 		// 共有
 		case R.id.menu_share:
+			tracker.trackPageView("/TopActivity/menu_share");
 			intent = new Intent(Intent.ACTION_SEND);
 			intent.setType("text/plain");
 			// intent.putExtra(Intent.EXTRA_TEXT,
@@ -147,6 +160,7 @@ public class TopActivity extends Activity {
 			break;
 		// 検索
 		case R.id.menu_search:
+			tracker.trackPageView("/TopActivity/menu_search");
 //			onSearchRequested();
 			intent = new Intent();
 			intent.setAction("android.intent.action.SEARCH");
