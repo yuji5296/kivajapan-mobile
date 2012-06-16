@@ -1,5 +1,7 @@
 package jp.kivajapan.rssreader;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -17,8 +19,13 @@ public class AccessibilityService extends
     private SharedPreferences mPrefAccess;
     public static final boolean DEBUG=true;    // 通知のToast表示フラグ
  
+	GoogleAnalyticsTracker tracker;
+
     @Override
     public void onCreate() {
+		tracker = GoogleAnalyticsTracker.getInstance();  
+		tracker.startNewSession("UA-20717846-4", 60, this); 
+		tracker.trackPageView("/AccessibilityService");
         super.onCreate();
     }
  

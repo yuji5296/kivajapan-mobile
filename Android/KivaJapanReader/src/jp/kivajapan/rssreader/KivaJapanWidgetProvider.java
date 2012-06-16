@@ -19,6 +19,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -41,9 +43,14 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
 	public static final String RSS_FEED_URL = "http://kivajapan.jp/atom.xml";
 //	private ArrayList<Item> mItems;
 //	private RssListAdapter mAdapter;
+	GoogleAnalyticsTracker tracker;
 
 	@Override
 	public void onEnabled(Context context) {
+		tracker = GoogleAnalyticsTracker.getInstance();  
+		tracker.startNewSession("UA-20717846-4", 60, context); 
+		tracker.trackPageView("/KivaJapanWidgetProvider");
+
 //		Log.v("KivaJapanReaderWidget", "onEnabled");
 		super.onEnabled(context);
 		

@@ -16,6 +16,8 @@
 
 package jp.kivajapan.rssreader;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,9 +53,13 @@ import android.widget.TextView;
 public class LauncherShortcuts extends Activity {
 
     private static final String EXTRA_KEY = "jp.kivajapan.rssreader.LauncherShortcuts";
+	GoogleAnalyticsTracker tracker;
 
     @Override
     public void onCreate(Bundle icicle) {
+		tracker = GoogleAnalyticsTracker.getInstance();  
+		tracker.startNewSession("UA-20717846-4", 60, this); 
+		tracker.trackPageView("/LauncherShortcuts");
         super.onCreate(icicle);
 
         // Resolve the intent
