@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class RssReaderActivity extends ListActivity implements ListView.OnScrollListener{
 	//public static final String RSS_FEED_URL = "http://itpro.nikkeibp.co.jp/rss/ITpro.rdf";
-	public static final String RSS_FEED_URL = "http://kivajapan.jp/atom.xml";
+	public static final String RSS_FEED_URL = "http://kivajapan.org/atom.xml";
 //	public static final int MENU_ITEM_RELOAD = Menu.FIRST; 
 	private ArrayList<Item> mItems;
 	private RssListAdapter mAdapter;

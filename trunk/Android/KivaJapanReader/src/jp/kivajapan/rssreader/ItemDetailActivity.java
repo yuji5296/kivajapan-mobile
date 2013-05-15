@@ -183,7 +183,7 @@ public class ItemDetailActivity extends Activity {
 			    intent = new Intent(Intent.ACTION_SEND);
 			    intent.setType("text/plain");  
 			    intent.putExtra(Intent.EXTRA_TEXT, mLink);
-//			    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("http://kivajapan.jp/"));
+//			    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("http://kivajapan.org/"));
 //			    intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"yuji5296@gmail.com"});  
 //			    intent.putExtra(Intent.EXTRA_CC, "yuji5296@gmail.com");  
 //			    intent.putExtra(Intent.EXTRA_BCC, "yuji5296@gmail.com");  
