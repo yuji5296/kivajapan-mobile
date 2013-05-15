@@ -15,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class TopActivity extends Activity {
-	String kivaUrl = "http://kivajapan.jp/";
-	String kivaRss = "http://kivajapan.jp/atom.xml";
+	String kivaUrl = "http://kivajapan.org/";
+	String kivaRss = "http://kivajapan.org/atom.xml";
 	String testUrl="file:///android_asset/test.html";
 	String imageUrl = "http://www.kiva.org/img/w450h360/776940.jpg";
 	String html = "<img src='http://www.kiva.org/img/w450h360/776940.jpg' width='100%'>";

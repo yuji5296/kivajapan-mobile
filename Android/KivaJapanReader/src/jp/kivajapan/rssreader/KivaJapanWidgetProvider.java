@@ -40,7 +40,7 @@ import android.widget.RemoteViews;
 
 
 public class KivaJapanWidgetProvider extends AppWidgetProvider {
-	public static final String RSS_FEED_URL = "http://kivajapan.jp/atom.xml";
+	public static final String RSS_FEED_URL = "http://kivajapan.org/atom.xml";
 //	private ArrayList<Item> mItems;
 //	private RssListAdapter mAdapter;
 	GoogleAnalyticsTracker tracker;
@@ -136,7 +136,7 @@ public class KivaJapanWidgetProvider extends AppWidgetProvider {
         		try {
 //            		String linkHref;
             		String imgSrc;
-            		String kivaUrl = "http://kivajapan.jp/";
+            		String kivaUrl = "http://kivajapan.org/";
             		String name;
             		String country = "国";
             		String category = "業種";
