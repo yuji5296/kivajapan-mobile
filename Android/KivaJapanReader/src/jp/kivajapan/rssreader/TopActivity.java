@@ -52,7 +52,7 @@ public class TopActivity extends Activity {
 	public void onClick_Pickup(View v) {
 		tracker.trackPageView("/TopActivity/onClick_Pickup");
 		String url = (String) v.getTag();
-		Uri uri = Uri.parse("http://kivajapan.jp" + url);
+		Uri uri = Uri.parse("http://kivajapan.org" + url);
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
@@ -67,7 +67,7 @@ public class TopActivity extends Activity {
 	public void onClickButton2(View v) {
 		tracker.trackPageView("/TopActivity/onClickButton2");
 		// Kiva Japanについて説明
-		Uri uri = Uri.parse("http://kivajapan.jp/?page=Bureau&action=beginners");
+		Uri uri = Uri.parse("http://kivajapan.org/?page=Bureau&action=beginners");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
@@ -75,7 +75,7 @@ public class TopActivity extends Activity {
 	public void onClickButton3(View v) {
 		tracker.trackPageView("/TopActivity/onClickButton3");
 		// 翻訳ページにジャンプ
-		Uri uri = Uri.parse("http://kivajapan.jp/?page=Bureau&action=about_translator");
+		Uri uri = Uri.parse("http://kivajapan.org/?page=Bureau&action=about_translator");
 		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 		startActivity(intent);
 	}
