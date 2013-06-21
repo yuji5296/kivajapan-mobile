@@ -15,8 +15,14 @@
         android:id="@+id/item_image"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
+        android:contentDescription="Picture"
+        android:maxHeight="75dp"
+        android:maxWidth="75dp"
+        android:minHeight="75dp"
+        android:minWidth="75dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/kiva_icon" android:minHeight="100px" android:minWidth="100px" android:maxHeight="100px" android:maxWidth="100px">
+        android:src="@drawable/kiva_icon" >
+
     </ImageView>
 
     <LinearLayout

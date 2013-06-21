@@ -34,14 +34,14 @@ public class DownloadPickupTask extends AsyncTask<String, Void, Bitmap> {
     	this.activity = activity;
         this.imageView = imageView;
     	// プログレス画像を表示（更新時に表示する為にここで設定）
-        this.imageView.setImageResource(R.drawable.progresscircle_small);
+//        this.imageView.setImageResource(R.drawable.progresscircle_small);
 
     	// アニメーションリソースをロード
-        Animation anim = AnimationUtils.loadAnimation(this.imageView.getContext(), R.anim.progresscircle);
-    	anim.setRepeatMode(Animation.RESTART);
+//        Animation anim = AnimationUtils.loadAnimation(this.imageView.getContext(), R.anim.progresscircle);
+//    	anim.setRepeatMode(Animation.RESTART);
 
     	// アニメーション開始
-    	this.imageView.startAnimation(anim);
+//    	this.imageView.startAnimation(anim);
 
     }  
     @Override  

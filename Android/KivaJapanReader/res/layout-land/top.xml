@@ -29,9 +29,11 @@
 				android:src="@drawable/about_translator2" android:scaleType="fitCenter"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageButton>
 		</LinearLayout>
-		<ImageView android:id="@+id/imageView1" android:src="@drawable/progresscircle_small"
+		<ImageView android:id="@+id/imageView1" 
 			android:layout_width="fill_parent" android:layout_height="fill_parent"
-			android:onClick="onClick_Pickup" android:scaleType="centerInside"></ImageView>
+			android:onClick="onClick_Pickup" android:scaleType="fitCenter">
+<!-- 		    android:src="@drawable/progresscircle_small" -->
+		</ImageView>
 		<!--
 			<WebView android:layout_width="match_parent"
 			android:id="@+id/webView1"
