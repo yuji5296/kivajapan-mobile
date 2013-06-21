@@ -11,6 +11,8 @@
     <string name="url_code">http://code.google.com/p/kivajapan-mobile/</string>
     <string name="url_kiva">http://www.kiva.org/</string>
     <string name="url_kivajapan">http://kivajapan.org/</string>
+    <string name="url_facebook">http://www.facebook.com/KivaJapanReader/</string>
+    <string name="url_twitter">http://twitter.com/#!/KivaJapanReader</string>
     <string name="help">ヘルプ</string>
     <string name="info">情報</string>
     <string name="update">更新</string>

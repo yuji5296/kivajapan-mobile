@@ -29,7 +29,7 @@
                 android:id="@+id/ImageView01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="centerInside"
+                android:scaleType="fitXY"
                 android:src="@drawable/advertisement" />
 
             <TextView
@@ -81,52 +81,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="" >
-            </TextView>
-            <!--
-				<TextView android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@color/textcolor" android:gravity="center"
-				android:id="@+id/link01" android:autoLink="web"
-				android:text="@string/url_site" /> <TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@color/textcolor" android:gravity="center"
-				android:text="@string/url_kivajapan" android:autoLink="web"
-				android:id="@+id/link02" /> <TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@color/textcolor" android:gravity="center"
-				android:text="@string/url_kiva" android:autoLink="web"
-				android:id="@+id/link03" /> <TextView android:id="@+id/TextView02"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"></TextView>
-            -->
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Visit our web site on Google site" >
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Feedback to KivaJapanReader on Facebook" >
-            </TextView>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Follow @kivajapanreader on Twitter" >
-            </TextView>
-
             <LinearLayout
                 android:id="@+id/linearLayout1"
                 android:layout_width="wrap_content"
@@ -147,6 +101,83 @@
                 android:gravity="center"
                 android:text="Designed by Keita Aoshima" >
             </TextView>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" >
+            </TextView>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Visit our web site on Google site" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/link01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:gravity="center"
+                android:text="@string/url_site"
+                android:textColor="@color/textcolor" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Feedback to KivaJapanReader on Facebook" >
+            </TextView>
+            <TextView
+                android:id="@+id/link04"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:gravity="center"
+                android:text="@string/url_facebook"
+                android:textColor="@color/textcolor" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Follow @kivajapanreader on Twitter" >
+            </TextView>
+            <TextView
+                android:id="@+id/link05"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:gravity="center"
+                android:text="@string/url_twitter"
+                android:textColor="@color/textcolor" />
+            
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" >
+            </TextView>
+            
+            <TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textcolor" android:gravity="center"
+				android:text="@string/url_kivajapan" android:autoLink="web"
+				android:id="@+id/link02" />
+            <TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textColor="@color/textcolor" android:gravity="center"
+				android:text="@string/url_kiva" android:autoLink="web"
+				android:id="@+id/link03" />
+			<TextView android:id="@+id/TextView02"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"></TextView>
+            
+            
         </LinearLayout>
     </ScrollView>
 
